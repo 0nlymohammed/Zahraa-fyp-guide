@@ -17,6 +17,7 @@ cap = cv2.VideoCapture("stream_encrypted.avi")
 w, h, fps = int(cap.get(3)), int(cap.get(4)), cap.get(cv2.CAP_PROP_FPS) or 24
 out = cv2.VideoWriter("receiver_view.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
+status = "AUTHORIZED (decrypted)" if MASTER_KEY else "MONITOR (no key)"
 i = 0
 while True:
     ok, frame = cap.read()
@@ -28,7 +29,7 @@ while True:
             x0, r = chaos.frame_key(MASTER_KEY, i)
             frame = chaos.decrypt(frame, x0, r)
         else:
-            for b in boxes[i]:
+            for b in reversed(boxes[i]):                     # عكس ترتيب التشفير (مهم عند تداخل وجهين)
                 if b["kind"] == "face":
                     x1, y1, x2, y2 = int(b["x1"]), int(b["y1"]), int(b["x2"]), int(b["y2"])
                     x0, r = chaos.frame_key(MASTER_KEY, i, int(b["id"]))
@@ -41,8 +42,8 @@ while True:
             cv2.putText(frame, f"id {b['id']}", (x1, max(20, y1 - 6)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 120, 0), 2)
 
-    status = "AUTHORIZED (decrypted)" if MASTER_KEY else "MONITOR (no key)"
-    cv2.putText(frame, status, (10, h - 12), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+    cv2.rectangle(frame, (0, 0), (330, 34), (30, 30, 30), -1)          # خلفية داكنة لنص الحالة
+    cv2.putText(frame, status, (8, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
     out.write(frame)
     if i == 60:
         cv2.imwrite("lab8_receiver_" + ("key" if MASTER_KEY else "nokey") + ".png", frame)

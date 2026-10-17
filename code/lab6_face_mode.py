@@ -7,6 +7,7 @@ import chaos
 SOURCE = "test_video.avi"
 MASTER_KEY = "zahraa-secret-2026"
 MARGIN = 0.2                 # نكبّر مربع الوجه 20% من كل جهة (الشعر والذقن يكشفان الهوية أيضاً)
+BLUR = False                 # True = تضبيب الوجه بدل تشفيره (للمقارنة في التقرير؛ التضبيب لا يمكن عكسه)
 
 # ملفا الموديل موجودان في مجلد الكود (مصدرهما opencv_zoo على GitHub، الرابط في الدليل)
 # OpenCV 5 -> face_detection_yunet_2026may.onnx   |   OpenCV 4 -> face_detection_yunet_2023mar.onnx
@@ -37,8 +38,11 @@ while True:
             x1 = max(0, int(x - MARGIN * fw)); y1 = max(0, int(y - MARGIN * fh))
             x2 = min(w, int(x + fw * (1 + MARGIN))); y2 = min(h, int(y + fh * (1 + MARGIN)))
             roi = frame[y1:y2, x1:x2]                           # قص منطقة الوجه
-            kx0, kr = chaos.frame_key(MASTER_KEY, i, k)         # مفتاح لكل وجه في كل فريم
-            frame[y1:y2, x1:x2] = chaos.encrypt(roi, kx0, kr)   # إرجاع المنطقة مشفرة
+            if BLUR:
+                frame[y1:y2, x1:x2] = cv2.GaussianBlur(roi, (51, 51), 0)   # تضبيب قوي، بدون مفتاح
+            else:
+                kx0, kr = chaos.frame_key(MASTER_KEY, i, k)     # مفتاح لكل وجه في كل فريم
+                frame[y1:y2, x1:x2] = chaos.encrypt(roi, kx0, kr)   # إرجاع المنطقة مشفرة
             csv_out.writerow([i, k, x1, y1, x2, y2])
     writer.write(frame)
     if i == 60:
@@ -49,13 +53,15 @@ while True:
     i += 1
 
 cap.release(); writer.release(); meta.close(); cv2.destroyAllWindows()
-print(f"فريمات فيها وجه مكشوف: {frames_with_face} / {i}")
+print(f"فريمات اكتشف فيها الكاشف وجهاً واحداً على الأقل: {frames_with_face} / {i}")
 print("الفيديو: faces_encrypted.avi   |   مواقع الوجوه: faces_meta.csv")
 
-# ---- فك وجه واحد كتجربة (نفس ما سيفعله الطرف المخوّل) ----
+# ---- فك وجوه الفريم 60 كتجربة (نفس ما سيفعله الطرف المخوّل) ----
+if BLUR:
+    raise SystemExit("التضبيب لا يُعكس، فلا يوجد ما يُفك. هذا بالضبط الفرق الذي تذكرينه في التقرير.")
 rows = [r for r in csv.DictReader(open("faces_meta.csv")) if r["frame"] == "60"]
 cap = cv2.VideoCapture("faces_encrypted.avi"); cap.set(cv2.CAP_PROP_POS_FRAMES, 60); _, f60 = cap.read()
-for r in rows:
+for r in reversed(rows):            # بالترتيب المعكوس للتشفير، مهم إذا تداخل مربعا وجهين
     x1, y1, x2, y2 = int(r["x1"]), int(r["y1"]), int(r["x2"]), int(r["y2"])
     kx0, kr = chaos.frame_key(MASTER_KEY, 60, int(r["face"]))
     f60[y1:y2, x1:x2] = chaos.decrypt(f60[y1:y2, x1:x2], kx0, kr)

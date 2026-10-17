@@ -9,6 +9,8 @@ DEVICE = "cpu"                 # اكتبي 0 إذا عندك كرت شاشة NV
 
 model = YOLO(MODEL)
 cap = cv2.VideoCapture(SOURCE)
+if not cap.isOpened():
+    raise SystemExit("لم أستطع فتح المصدر. تأكدي من اسم الملف أو رقم الكاميرا.")
 w, h = int(cap.get(3)), int(cap.get(4))
 out = cv2.VideoWriter("tracked.mp4", cv2.VideoWriter_fourcc(*"mp4v"), 24, (w, h))
 

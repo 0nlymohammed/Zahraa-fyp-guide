@@ -14,12 +14,15 @@ MARGIN = 0.2
 
 model = YOLO("yolo26n.pt")
 cap = cv2.VideoCapture(SOURCE)
+if not cap.isOpened():
+    raise SystemExit("لم أستطع فتح المصدر. تأكدي من اسم الملف أو رقم الكاميرا.")
 w, h, fps = int(cap.get(3)), int(cap.get(4)), cap.get(cv2.CAP_PROP_FPS) or 24
 face_model = "face_detection_yunet_2026may.onnx" if cv2.__version__.startswith("5") else "face_detection_yunet_2023mar.onnx"
 faces_det = cv2.FaceDetectorYN.create(face_model, "", (w, h), 0.6, 0.3, 50)
 
 writer = cv2.VideoWriter("stream_encrypted.avi", cv2.VideoWriter_fourcc(*"FFV1"), fps, (w, h))
-meta = csv.writer(open("stream_meta.csv", "w", newline=""))
+meta_file = open("stream_meta.csv", "w", newline="")
+meta = csv.writer(meta_file)
 meta.writerow(["frame", "kind", "id", "label", "x1", "y1", "x2", "y2"])
 # kind = "track": مربع شخص من YOLO (للعرض فقط)     kind = "face": مربع وجه مشفر (يحتاجه فك التشفير)
 
@@ -57,6 +60,6 @@ while True:
     writer.write(frame)
     i += 1
 
-cap.release(); writer.release()
+cap.release(); writer.release(); meta_file.close()
 print(f"المرسل: {i} فريم في {time.time() - t0:.1f} ثانية، الوضع = {MODE}")
 print("الملفات: stream_encrypted.avi + stream_meta.csv   (أرسلي الاثنين للمستقبل، والمفتاح بطريقة آمنة منفصلة)")

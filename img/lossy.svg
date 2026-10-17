@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 700" width="1320" height="700" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+  <rect width="1320" height="700" fill="#ffffff"/>
+  <text x="40" y="46" font-size="26" font-weight="700" fill="#1f2328">Lossy formats rewrite almost every byte of an encrypted frame; lossless formats keep all of them</text>
+  <text x="40" y="76" font-size="17" fill="#57606a">measured on photo.jpg with chaos.py: JPG changed 99.25% of the cipher bytes; PNG and FFV1 changed none</text>
+
+  <!-- top box -->
+  <rect x="400" y="100" width="520" height="80" rx="14" fill="#e9ebee" stroke="#c9ced4" stroke-width="2"/>
+  <text x="660" y="133" font-size="20" font-weight="700" text-anchor="middle" fill="#1f2328">encrypted frame (looks like noise)</text>
+  <text x="660" y="161" font-size="16" text-anchor="middle" fill="#57606a">921,600 bytes for 640 x 480, no repeating patterns to compress</text>
+
+  <!-- split arrows -->
+  <g stroke="#c9ced4" stroke-width="2" fill="none">
+    <path d="M540 180 V215 H320 V250"/>
+    <path d="M780 180 V215 H1000 V250"/>
+  </g>
+  <g fill="#c9ced4">
+    <path d="M313 245 L320 259 L327 245 Z"/>
+    <path d="M993 245 L1000 259 L1007 245 Z"/>
+  </g>
+
+  <!-- left column: lossy -->
+  <rect x="60" y="262" width="520" height="84" rx="14" fill="#ffffff" stroke="#c9ced4" stroke-width="2"/>
+  <text x="320" y="295" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">save as JPG, MP4 (mp4v), XVID or H.264</text>
+  <text x="320" y="323" font-size="16" text-anchor="middle" fill="#57606a">lossy: the encoder is allowed to change values</text>
+  <path d="M320 346 V392" stroke="#c9ced4" stroke-width="2"/><path d="M313 387 L320 401 L327 387 Z" fill="#c9ced4"/>
+
+  <rect x="60" y="404" width="520" height="84" rx="14" fill="#fbe9e7" stroke="#cf222e" stroke-width="2"/>
+  <text x="320" y="437" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">99% of the bytes come back different</text>
+  <text x="320" y="465" font-size="16" text-anchor="middle" fill="#57606a">noise has no pattern, so the encoder approximates it</text>
+  <path d="M320 488 V534" stroke="#c9ced4" stroke-width="2"/><path d="M313 529 L320 543 L327 529 Z" fill="#c9ced4"/>
+
+  <rect x="60" y="546" width="520" height="80" rx="14" fill="#fbe9e7" stroke="#cf222e" stroke-width="2"/>
+  <text x="320" y="578" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">decrypt: still noise</text>
+  <text x="320" y="605" font-size="15" text-anchor="middle" fill="#57606a">nearly every input byte is wrong, so nearly every output byte is wrong</text>
+
+  <!-- right column: lossless -->
+  <rect x="740" y="262" width="520" height="84" rx="14" fill="#ffffff" stroke="#c9ced4" stroke-width="2"/>
+  <text x="1000" y="295" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">save as PNG or FFV1 (.avi)</text>
+  <text x="1000" y="323" font-size="16" text-anchor="middle" fill="#57606a">lossless: every value is stored exactly</text>
+  <path d="M1000 346 V392" stroke="#c9ced4" stroke-width="2"/><path d="M993 387 L1000 401 L1007 387 Z" fill="#c9ced4"/>
+
+  <rect x="740" y="404" width="520" height="84" rx="14" fill="#e6f4ea" stroke="#1a7f37" stroke-width="2"/>
+  <text x="1000" y="437" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">0 bytes changed</text>
+  <text x="1000" y="465" font-size="16" text-anchor="middle" fill="#57606a">the file is bigger, but it is exactly what was written</text>
+  <path d="M1000 488 V534" stroke="#c9ced4" stroke-width="2"/><path d="M993 529 L1000 543 L1007 529 Z" fill="#c9ced4"/>
+
+  <rect x="740" y="546" width="520" height="80" rx="14" fill="#e6f4ea" stroke="#1a7f37" stroke-width="2"/>
+  <text x="1000" y="578" font-size="19" font-weight="700" text-anchor="middle" fill="#1f2328">decrypt: original frame</text>
+  <text x="1000" y="605" font-size="16" text-anchor="middle" fill="#57606a">pixel for pixel (np.array_equal is True)</text>
+
+  <!-- footer note -->
+  <text x="40" y="660" font-size="16" fill="#57606a">one corrupted byte in transit damages only about 3 pixels after decryption (measured), so the problem with JPG</text>
+  <text x="40" y="684" font-size="16" fill="#57606a">is the sheer number of changed bytes, not error spreading</text>
+</svg>

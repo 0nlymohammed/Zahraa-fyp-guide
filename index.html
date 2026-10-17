@@ -63,7 +63,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 <p class="meta"><a href="https://github.com/0nlymohammed/Zahraa-fyp-guide">الكود على GitHub</a> · <a href="reference.html">النسخة النظرية المطوّلة</a> · <a href="review.html">مراجعة الاستمارة</a></p>
 
 <h2 id="start" style="border:0;margin-top:1em">شوفي زهراء هذا شرح مفصل</h2>
-<p>بس مو شرح للقراءة، شرح للتطبيق. المشروع كله ينبني بثماني تجارب، كل وحدة فيها كود جاهز تنسخينه وتشغّلينه، وصورة لشنو المفروض يطلعلك، وشرح قصير ليش، والأخطاء الي راح تصادفك وحلّها. آخر تجربة هي المشروع نفسه شغّال: كاميرا ← تتبع ← تشفير ← إرسال ← فك ← عرض.</p>
+<p>بس مو شرح للقراءة، شرح للتطبيق. المشروع كله ينبني بتسع تجارب (من 0 إلى 8)، كل وحدة فيها كود جاهز تنسخينه وتشغّلينه، وصورة لشنو المفروض يطلعلك، وشرح قصير ليش، والأخطاء الي راح تصادفك وحلّها. آخر تجربة هي المشروع نفسه شغّال: كاميرا ← تتبع ← تشفير ← إرسال ← فك ← عرض.</p>
 <p>كل كود هنا شغّلته أنا بنفسي قبل ما أحطه، والأرقام والصور الي بالصفحة هي مخرجاته الحقيقية مو مرسومة. وين ما تشوفين «شنو المفروض تشوفين» قارني مخرجاتك بيه؛ إذا تطابق، انتقلي للي بعده.</p>
 <div class="goal"><b>طريقة الشغل:</b> التجارب بالترتيب، وحدة كل جلسة (ساعة إلى ساعتين). لا تقرأي صندوق «ليش؟» إلا بعد ما يشتغل الكود عندك، لأن النظرية تنفهم أسهل بعد ما تشوفين النتيجة.</div>
 
@@ -78,6 +78,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 <li><a href="#lab6">التجربة 6: وضع خصوصية الوجوه</a></li>
 <li><a href="#lab7">التجربة 7: أرقام التقرير</a></li>
 <li><a href="#lab8">التجربة 8: المرسل والمستقبل (المشروع كاملاً)</a></li>
+<li><a href="#coverage">هل الورشة تغطي كل ما في الملفين؟</a></li>
 <li><a href="#report">من التجارب إلى التقرير والمناقشة</a></li>
 <li><a href="#limits">حدود لازم تذكرينها بنفسك</a></li>
 <li><a href="#english">English: terms and ready sentences</a></li>
@@ -85,27 +86,27 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 </ol></nav>
 
 <h2 id="idea">الفكرة بدقيقتين</h2>
-<p>كاميرا مراقبة تصوّر ناس. برنامج على نفس الجهاز يكشف كل شخص ويعطيه رقماً يلازمه طول الفيديو (هذا «التتبع»). قبل ما يطلع أي فريم من الجهاز، يُشفَّر بخوارزمية مبنية على معادلة فوضوية (معادلة بسيطة جداً لكن نتائجها تبدو عشوائية تماماً وتتغير كلياً لو غيّرتِ المفتاح برقم واحد بعد الفاصلة العاشرة). الطرف الي عنده المفتاح يفك التشفير ويشوف الفيديو مع مربعات التتبع. والي ما عنده المفتاح يشوف ضوضاء.</p>
+<p>كاميرا مراقبة تصوّر ناس. برنامج على نفس الجهاز يكشف كل شخص ويعطيه رقماً يلازمه طول الفيديو (هذا «التتبع»). قبل ما يطلع أي فريم من الجهاز، يُشفَّر بخوارزمية مبنية على معادلة فوضوية (معادلة بسيطة جداً لكن نتائجها تبدو عشوائية تماماً وتتغير كلياً لو غيّرتِ المفتاح برقم واحد بعد الفاصلة العاشرة). الطرف الي عنده المفتاح يفك التشفير ويشوف الفيديو مع مربعات التتبع. والي ما عنده المفتاح يشوف ضوضاء. ملف الشرح يذكر أربعة أماكن تنفع فيها الفكرة: المراقبة الذكية، المستشفيات، الجامعات، والمباني العامة.</p>
 <p>«وضع خصوصية الوجوه» نسخة ألطف: بدل ما نشفّر الفريم كله، نشفّر مربع الوجه فقط. الموظف على شاشة المراقبة يشوف الناس تتحرك وأرقامها، بس ما يعرف منو هم. ولمّا يصير حادث، الجهة المخوّلة تفك الوجوه بالمفتاح.</p>
 <figure class="diagram"><a href="img/2410d0fe-c11e.png" target="_blank" rel="noopener"><img src="img/2410d0fe-c11e.png" alt="مسار الفريم الواحد. كل ما داخل الإطار يصير على الجهاز الموثوق المتصل بالكاميرا. الي يطلع منه مشفر دائماً. (الكود يستخدم خريطة logistic فقط؛ Hénon المذكورة بصندوق المفتاح خيار إضافي مشروح بالمرجع المطوّل.)"></a><figcaption>مسار الفريم الواحد. كل ما داخل الإطار يصير على الجهاز الموثوق المتصل بالكاميرا. الي يطلع منه مشفر دائماً. (الكود يستخدم خريطة logistic فقط؛ Hénon المذكورة بصندوق المفتاح خيار إضافي مشروح بالمرجع المطوّل.)</figcaption></figure>
-<p><b>هل المشروع ذكاء اصطناعي؟</b> جزء واحد بس: الموديل الي يكشف الأشخاص (YOLO) شبكة عصبية جاهزة تنزّلينها وتستخدمينها بثلاثة أسطر، ما تدرّبين شيئاً. الباقي (التتبع، التشفير، الإرسال، القياسات) برمجة ورياضيات عادية، وهو الجزء الي راح تكتبينه بإيدك.</p>
+<p><b>هل المشروع ذكاء اصطناعي؟</b> جزآن جاهزان بس: موديل كشف الأشخاص (YOLO) وموديل كشف الوجوه (YuNet)، وكلاهما شبكة عصبية مدرّبة مسبقاً تنزّلينها وتستخدمينها بأسطر قليلة، ما تدرّبين شيئاً. الباقي (التتبع، التشفير، الإرسال، القياسات) برمجة ورياضيات عادية، وهو الجزء الي راح تكتبينه بإيدك.</p>
 
 <h2 id="lab0"><span class="num">0</span>تجهيز اللابتوب</h2>
 <div class="goal"><b>الهدف:</b> بنهاية هالخطوة يكون عندك مجلد <code>fyp</code> فيه كل ملفات الكود، وبيئة Python فيها كل المكتبات، وأمر واحد يطبع إصدار OpenCV بدون أخطاء.</div>
 <h3>1. Python</h3>
-<p>نزّلي Python 3.12 من <a href="https://www.python.org/downloads/windows/">python.org</a> (Windows installer 64-bit). <b>أهم خطوة:</b> بأول شاشة من المنصّب أشّري على <b>Add python.exe to PATH</b> قبل ما تضغطين Install. بدونها ما راح يعرف الويندوز وين Python.</p>
+<p>نزّلي <b>Python 3.13</b> من <a href="https://www.python.org/downloads/windows/">python.org</a>: لا تضغطي الزر الكبير بأعلى الصفحة (إصدار 3.15 الأحدث، وبعض المكتبات مثل torch وlap ما توفر له ملفات تنصيب بعد)، بل انزلي في الصفحة إلى <b>Python 3.13.16</b> (أو أي 3.13.x) واختاري <b>Windows installer (64-bit)</b>. <b>أهم خطوة:</b> بأول شاشة من المنصّب أشّري على <b>Add python.exe to PATH</b> قبل ما تضغطين Install. بدونها ما راح يعرف الويندوز وين Python.</p>
 <h3>2. VS Code</h3>
 <p>نزّلي <a href="https://code.visualstudio.com/">Visual Studio Code</a> ومن تبويب Extensions (Ctrl+Shift+X) نصّبي إضافة <b>Python</b> من Microsoft.</p>
 <h3>3. الكود</h3>
 <p>نزّلي <a href="https://github.com/0nlymohammed/Zahraa-fyp-guide/archive/refs/heads/main.zip">المستودع كملف zip</a>، فكّي الضغط، وانسخي مجلد <code>code</code> إلى <code>C:\fyp</code> (يعني تصير الملفات مثل <code>C:\fyp\chaos.py</code>). المجلد فيه: ملفات التجارب، فيديو اختبار <code>test_video.avi</code>، صورة اختبار <code>photo.jpg</code>، وملفا كاشف الوجوه.</p>
 <h3>4. البيئة والمكتبات</h3>
 <p>افتحي مجلد <code>C:\fyp</code> من VS Code (File → Open Folder)، ثم افتحي الطرفية (Terminal → New Terminal) واكتبي:</p>
-<div class="codewrap"><div class="codehead"><span>PowerShell داخل VS Code</span><button class="copy" type="button">نسخ</button></div><pre><code>py -m venv venv
+<div class="codewrap"><div class="codehead"><span>PowerShell داخل VS Code</span><button class="copy" type="button">نسخ</button></div><pre><code>py -3.13 -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt</code></pre></div>
-<p>أول سطر يسوي بيئة معزولة اسمها venv، الثاني يفعّلها (راح يظهر <code>(venv)</code> ببداية السطر)، الثالث ينصّب: ultralytics (YOLO)، opencv-python، numpy، matplotlib، lap (للتتبع)، numba (لتسريع التشفير). يأخذ 5 إلى 10 دقائق.</p>
+<p>أول سطر يسوي بيئة معزولة اسمها venv بإصدار 3.13 تحديداً (لو عندك أكثر من إصدار Python، بدون <code>-3.13</code> يختار المشغّل الأحدث)، الثاني يفعّلها (راح يظهر <code>(venv)</code> ببداية السطر)، الثالث ينصّب: ultralytics (YOLO)، opencv-python، numpy، matplotlib، lap (للتتبع)، numba (لتسريع التشفير). يأخذ 5 إلى 10 دقائق.</p>
 <h3>5. كرت الشاشة (اختياري بس يستاهل)</h3>
-<p>عندك كرت NVIDIA؟ <code>pip install ultralytics</code> ينصّب نسخة torch تشتغل على المعالج فقط. حتى يشتغل YOLO على الكرت: افتحي <a href="https://pytorch.org/get-started/locally/">pytorch.org/get-started</a>، اختاري Windows → Pip → Python → CUDA (أحدث رقم)، وانسخي الأمر الي يطلع (شكله <code>pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128</code>، والرقم بعد cu يتغير مع الوقت فانسخيه من الموقع). قبلها حدّثي تعريف الكرت من تطبيق NVIDIA App (أو GeForce Experience القديم) أو من موقع NVIDIA. لو الكرت AMD أو Intel اتركي هالخطوة، المعالج يكفي.</p>
+<p>عندك كرت NVIDIA؟ <code>pip install ultralytics</code> ينصّب نسخة torch تشتغل على المعالج فقط. حتى يشتغل YOLO على الكرت: افتحي <a href="https://pytorch.org/get-started/locally/">pytorch.org/get-started</a>، اختاري Windows → Pip → Python → CUDA (أحدث رقم)، وانسخي الأمر الي يطلع (شكله <code>pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128</code>، والرقم بعد cu يتغير مع الوقت فانسخيه من الموقع). <b>قبل تنفيذه</b> احذفي نسخة المعالج الي نصّبتها ultralytics: <code>pip uninstall -y torch torchvision</code>، وإلا يقول pip «Requirement already satisfied» ويبقي النسخة القديمة. قبلها حدّثي تعريف الكرت من تطبيق NVIDIA App (أو GeForce Experience القديم) أو من موقع NVIDIA. لو الكرت AMD أو Intel اتركي هالخطوة، المعالج يكفي.</p>
 <h3>6. التأكد</h3>
 <div class="codewrap"><div class="codehead"><span>PowerShell</span><button class="copy" type="button">نسخ</button></div><pre><code>python -c &quot;import cv2, ultralytics, numba, torch; print(&#x27;OpenCV&#x27;, cv2.__version__); print(&#x27;CUDA:&#x27;, torch.cuda.is_available())&quot;</code></pre></div>
 <div class="box see"><div class="boxtitle">شنو المفروض تشوفين</div><pre class="output">OpenCV 5.0.0         (أو 4.12.0 إذا نسختك أقدم؛ الاثنان يشتغلان مع الكود)
@@ -114,7 +115,7 @@ CUDA: True           (False إذا ما سويتِ خطوة 5، وهذا طبي�
 <li><b>'python' is not recognized</b> → ما أشّرتِ على Add to PATH. أعيدي تنصيب Python وأشّري عليها، أو استخدمي <code>py</code> بدل <code>python</code>.</li>
 <li><b>running scripts is disabled on this system</b> عند تفعيل venv → اكتبي <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code> واضغطي Y، ثم أعيدي الأمر.</li>
 <li><b>لا تنصّبين opencv-python و opencv-contrib-python معاً</b> → يتعاركان. واحدة بس، وهي opencv-python.</li>
-<li><b>numba ما تنصّبت</b> → غالباً إصدار Python أحدث من الي تدعمه. استخدمي Python 3.12. وإذا ما نفع، شيليها من requirements.txt؛ الكود يشتغل بدونها لكن التشفير يصير أبطأ 8 مرات (التجربة 5 تبيّن الفرق).</li>
+<li><b>numba أو torch أو lap ما تنصّبت</b> → غالباً نصّبتِ Python 3.15 الجديد الذي لا توفر له هذه المكتبات ملفات جاهزة بعد. احذفيه ونصّبي 3.13 (أو 3.12). وإذا numba وحدها ما نفعت، شيليها من requirements.txt؛ الكود يشتغل بدونها لكن التشفير يصير أبطأ 8 مرات (التجربة 5 تبيّن الفرق).</li>
 <li><b>ملاحظة مهمة:</b> كل ما تفتحين VS Code من جديد، شغّلي <code>venv\Scripts\activate</code> قبل أي شيء.</li></ul></div>
 <div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://www.youtube.com/watch?v=mvZHDpCHphk" target="_blank" rel="noopener">Elzero Web School: Learn Python in Arabic #001</a>: إذا Python جديد عليك كلياً. الحلقات الأولى (المتغيرات، القوائم، الحلقات، الدوال) تكفي لهالمشروع.</li><li><a href="https://www.youtube.com/watch?v=Do34NKMq80c" target="_blank" rel="noopener">OctuCode: تعلم بايثون من الصفر</a>: بديل عربي بفيديو واحد طويل.</li><li><a href="https://youtu.be/eWRfhZUzrAc" target="_blank" rel="noopener">freeCodeCamp: Python for Beginners</a>: بالإنكليزي، إذا تفضّلين مصدراً واحداً مرتّباً.</li></ul></div>
 
@@ -182,6 +183,8 @@ DEVICE = &quot;cpu&quot;                 # اكتبي 0 إذا عندك كرت �
 
 model = YOLO(MODEL)
 cap = cv2.VideoCapture(SOURCE)
+if not cap.isOpened():
+    raise SystemExit(&quot;لم أستطع فتح المصدر. تأكدي من اسم الملف أو رقم الكاميرا.&quot;)
 w, h = int(cap.get(3)), int(cap.get(4))
 out = cv2.VideoWriter(&quot;tracked.mp4&quot;, cv2.VideoWriter_fourcc(*&quot;mp4v&quot;), 24, (w, h))
 
@@ -219,7 +222,7 @@ print(&quot;الفيديو المرسوم محفوظ باسم tracked.mp4&quot;)
 <div class="box see"><div class="boxtitle">شنو المفروض تشوفين</div><pre class="output">فريمات: 120  |  السرعة: 5.7 FPS على cpu      ← على لابتوبك أسرع، ومع الكرت أسرع بكثير
 أرقام التتبع التي ظهرت: [1, 2, 3, 4, 5]
 الفيديو المرسوم محفوظ باسم tracked.mp4</pre></div>
-<figure class="diagram"><a href="img/lab2_track.jpg" target="_blank" rel="noopener"><img src="img/lab2_track.jpg" alt="الفريم 60 من فيديو الاختبار كما رسمه YOLO: شخصان برقمين ثابتين 1 و2، وفنجان، وطاولة. فيديو الاختبار مركّب من صورة عامة واحدة مكررة تتحرك، لهذا الشخصان متشابهان؛ على كاميرتك راح يكون كل شخص مختلفاً."></a><figcaption>الفريم 60 من فيديو الاختبار كما رسمه YOLO: شخصان برقمين ثابتين 1 و2، وفنجان، وطاولة. فيديو الاختبار مركّب من صورة عامة واحدة مكررة تتحرك، لهذا الشخصان متشابهان؛ على كاميرتك راح يكون كل شخص مختلفاً.</figcaption></figure>
+<figure class="diagram"><a href="img/lab2_track.jpg" target="_blank" rel="noopener"><img src="img/lab2_track.jpg" alt="الفريم 60 من فيديو الاختبار كما رسمه YOLO: شخصان برقمين ثابتين 1 و2، وفنجان، وطاولة. فيديو الاختبار مركّب من صورة عامة واحدة مكررة تتحرك وصورة فنجان، لهذا الشخصان متشابهان؛ على كاميرتك راح يكون كل شخص مختلفاً."></a><figcaption>الفريم 60 من فيديو الاختبار كما رسمه YOLO: شخصان برقمين ثابتين 1 و2، وفنجان، وطاولة. فيديو الاختبار مركّب من صورة عامة واحدة مكررة تتحرك وصورة فنجان، لهذا الشخصان متشابهان؛ على كاميرتك راح يكون كل شخص مختلفاً.</figcaption></figure>
 <div class="box why"><div class="boxtitle">ليش؟</div><p><b>الكشف</b> (detect) يقول «هنا شخص» في كل فريم لوحده، وما يعرف أن شخص الفريم 10 هو نفسه شخص الفريم 11. <b>التتبع</b> (track) يربط المربعات بين الفريمات بالاعتماد على مكان الجسم المتوقع (Kalman filter) ومقدار تداخل المربعات (IoU)، ويعطي كل جسم رقماً. بعض الخوارزميات تضيف «بصمة شكل» الجسم (ReID)؛ DeepSORT تفعل ذلك دائماً، وBoT-SORT في Ultralytics تفعله فقط إذا فعّلتِ <code>with_reid</code> في ملف الإعدادات، وهو مطفأ افتراضياً. لهذا نستخدم <code>model.track</code> مو <code>model.predict</code>، ونمرر <code>persist=True</code> حتى يتذكر الفريم السابق.</p>
 <p>الملف يذكر DeepSORT وCSRT وKCF. CSRT وKCF يتتبعان جسماً واحداً بس وتعطينهما المربع بإيدك، فما يناسبان مراقبة عدة أشخاص. BoT-SORT الي بالكود من نفس عائلة DeepSORT (كشف ثم مطابقة مع Kalman filter)، فبالإطار النظري اشرحي DeepSORT وبالعملي استخدمي BoT-SORT واذكري الاسمين. حددي الخوارزمية بنفسك بالاسم (<code>tracker="botsort.yaml"</code>) لأن الافتراضية تتغير بين الإصدارات.</p>
 <p>YOLO مدرّب على مجموعة COCO (80 نوعاً من الأجسام، منها الشخص والسيارة والفنجان)، لهذا كشف الفنجان والطاولة بدون ما نطلب. بالمشروع راح نحصره بالأشخاص بسطر واحد (<code>classes=[0]</code>) بالتجربة 8.</p></div>
@@ -283,8 +286,8 @@ print(&quot;الرسم محفوظ باسم lab3_logistic.png&quot;)</code></pre>
 <div class="box see"><div class="boxtitle">شنو المفروض تشوفين</div><pre class="output">السلسلتان تفترقان (فرق &gt; 0.1) عند التكرار رقم 23
 الرسم محفوظ باسم lab3_logistic.png</pre></div>
 <figure class="diagram"><a href="img/lab3_logistic.png" target="_blank" rel="noopener"><img src="img/lab3_logistic.png" alt="(أ) نفس البداية 0.3: مع r = 2.8 تستقر، مع 3.2 تتأرجح بين قيمتين، مع 3.99 ما تتكرر أبداً. (ب) بداية 0.3 مقابل 0.3000001: متطابقتان 22 خطوة ثم تفترقان نهائياً. (ج) البايتات المشتقة من 100 ألف قيمة موزعة بالتساوي تقريباً."></a><figcaption>(أ) نفس البداية 0.3: مع r = 2.8 تستقر، مع 3.2 تتأرجح بين قيمتين، مع 3.99 ما تتكرر أبداً. (ب) بداية 0.3 مقابل 0.3000001: متطابقتان 22 خطوة ثم تفترقان نهائياً. (ج) البايتات المشتقة من 100 ألف قيمة موزعة بالتساوي تقريباً.</figcaption></figure>
-<div class="box why"><div class="boxtitle">ليش؟</div><p>المعادلة أبسط من معادلة الدرجة الثانية، بس لمّا r قريب من 4 تصير النتائج حساسة للبداية لدرجة أن حاسبة تضرب أعداداً بـ 16 خانة عشرية تفقد أي تشابه بعد 20 إلى 50 خطوة. هذا هو «الفوضى»: نظام محدد تماماً (نفس البداية تعطي نفس السلسلة دائماً، وهذا ما يخلي فك التشفير ممكناً) لكن لا يمكن التنبؤ به بدون معرفة البداية بدقة كاملة.</p>
-<p>المفتاح عندنا = (x<sub>0</sub>, r). السلوك فوضوي من r ≈ 3.57، لكن بين 3.57 و4 توجد «نوافذ» صغيرة ترجع فيها الدورية (أشهرها قرب 3.83)، لهذا نحصر r بين 3.99 و4. ونرمي أول 1000 قيمة (<code>skip</code> في chaos.py) حتى لو بدأ مفتاحان متقاربين تفترق سلسلتاهما قبل ما نستخدمها.</p>
+<div class="box why"><div class="boxtitle">ليش؟</div><p>المعادلة من الدرجة الثانية فقط (r·x − r·x²) لكنها تُطبَّق على ناتجها مرة بعد مرة، ولمّا r قريب من 4 تصير النتائج حساسة للبداية لدرجة أن حاسبة تضرب أعداداً بـ 16 خانة عشرية تفقد أي تشابه بعد 20 إلى 50 خطوة. هذا هو «الفوضى»: نظام محدد تماماً (نفس البداية تعطي نفس السلسلة دائماً، وهذا ما يخلي فك التشفير ممكناً) لكن لا يمكن التنبؤ به بدون معرفة البداية بدقة كاملة.</p>
+<p>المفتاح عندنا = (x<sub>0</sub>, r). السلوك فوضوي من r ≈ 3.57، لكن بين 3.57 و4 توجد «نوافذ» صغيرة ترجع فيها الدورية (أشهرها قرب 3.83)، لهذا نحصر r بين 3.99 و4. ونرمي أول 1000 قيمة (<code>skip</code> في chaos.py) حتى لو بدأ مفتاحان متقاربان تفترق سلسلتاهما قبل ما نستخدمها.</p>
 <p>الرسم (ج) يجاوب على سؤال مهم بالمناقشة: الأعداد x نفسها مو موزعة بالتساوي (تتجمع قرب 0 و1)، لكن لمّا نأخذ الخانات البعيدة بالتحويل floor(x × 10⁸) mod 256 يصير التوزيع مسطحاً، وهذا الي نحتاجه لمفتاح جيد.</p></div>
 <div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://www.youtube.com/watch?v=ovJcsL7vyrk" target="_blank" rel="noopener">Veritasium: هذه المعادلة ستغير نظرتك للعالم</a>: أفضل شرح موجود لمعادلة logistic. فعّلي الترجمة التلقائية إلى العربية من إعدادات الفيديو إذا احتجتِ. شاهديه قبل ما تقرأين أي شيء ثاني.</li><li><a href="https://en.wikipedia.org/wiki/Logistic_map" target="_blank" rel="noopener">ويكيبيديا: Logistic map</a>: للتأكد من الأرقام (3.56995، نافذة 3.83) ولصورة bifurcation diagram للتقرير.</li><li><a href="https://cdnx.uobabylon.edu.iq/undergrad_projs/s9O22KIdZUSvWH6ROctLw.pdf" target="_blank" rel="noopener">مشروع تخرج من جامعة بابل: Image Encryption using a logistic chaotic system</a>: مشروع عراقي بنفس الفكرة، مفيد تشوفين كيف كتبوا الفصل النظري.</li></ul></div>
 
@@ -484,15 +487,15 @@ print(&quot;الرسم محفوظ باسم lab4_result.png&quot;)</code></pre></
 <p><b>_streams:</b> نولّد سلسلة فوضوية طولها 3 أضعاف عدد البايتات. الثلث الأول نرتّبه بـ <code>argsort</code> فنحصل على ترتيب جديد «عشوائي» للمواقع (هذا هو مفتاح البعثرة)، والثلثان الآخران يتحولان إلى بايتات مفتاح.</p>
 <p><b>encrypt</b> ثلاث خطوات: (1) <b>بعثرة</b>: ننقل كل بايت إلى موقع جديد حسب الترتيب، فتختفي الأشكال لكن الألوان نفسها باقية (الهستوغرام ما يتغير). (2) <b>انتشار أمامي</b>: كل بايت جديد = مفتاحه XOR (البايت الأصلي + البايت المشفر الي قبله) mod 256، فيصير كل بايت معتمداً على كل الي قبله. (3) <b>انتشار خلفي</b>: نفس الشيء من النهاية للبداية، فيصير كل بايت معتمداً على كل الصورة. <b>decrypt</b> يعكس الثلاث بالترتيب المعاكس.</p>
 <p><b>ليش جولتا انتشار مو وحدة؟</b> لمّا شغّلت التجربة 7 أول مرة بجولة أمامية فقط طلع NPCR = 7.4% بدل 99.6%، لأن تغيير بكسل واحد يؤثر بس على البكسلات الي بعده بالترتيب. الجولة الخلفية تخلي التغيير يصل لكل بكسل. اذكري هذا بالتقرير كقرار تصميم مع سببه.</p>
-<p><b>JPG:</b> يضغط الصورة بتغيير قيم البكسلات تغييراً بسيطاً لا تلاحظه العين. بالصورة العادية ما يهم؛ بالصورة المشفرة كل بايت متغير يكسر سلسلة الانتشار كلها، فيرجع كل شيء ضوضاء. لهذا الصور المشفرة تُحفظ PNG والفيديو المشفر يُحفظ بترميز بدون فقد (التجربة 5).</p></div>
+<p><b>JPG:</b> يضغط الصورة بتغيير قيم البكسلات تغييراً بسيطاً لا تلاحظه العين. بالصورة العادية ما يهم؛ لكن الصورة المشفرة ضوضاء بلا أي نمط يمكن ضغطه، فالضاغط «يقرّب» كل شيء: قسته على photo.jpg فتغير 99.25% من بايتات الصورة المشفرة، ولهذا يرجع كل شيء ضوضاء بعد الفك. (التفصيل الدقيق: خطأ في بايت واحد فقط يفسد نحو 3 بكسلات بعد الفك، قسته أيضاً؛ المشكلة مع JPG هي عدد البايتات المتغيرة لا انتشار الخطأ.) لهذا الصور المشفرة تُحفظ PNG والفيديو المشفر يُحفظ بترميز بدون فقد (التجربة 5).</p></div>
 <figure class="diagram"><a href="img/78fddc27-51db.png" target="_blank" rel="noopener"><img src="img/78fddc27-51db.png" alt="مثال مصغّر بـ 9 بكسلات يوضح البعثرة ثم الانتشار بالأرقام. الحساب اليدوي الكامل موجود في المرجع المطوّل (هناك يبدأ الانتشار من c0 = 100 بينما الكود يبدأ من 0، والفكرة نفسها)."></a><figcaption>مثال مصغّر بـ 9 بكسلات يوضح البعثرة ثم الانتشار بالأرقام. الحساب اليدوي الكامل موجود في المرجع المطوّل (هناك يبدأ الانتشار من c0 = 100 بينما الكود يبدأ من 0، والفكرة نفسها).</figcaption></figure>
-<figure class="diagram"><a href="img/3365f17b-612a.png" target="_blank" rel="noopener"><img src="img/3365f17b-612a.png" alt="ليش JPG/MP4 يكسران فك التشفير وPNG/FFV1 لا."></a><figcaption>ليش JPG/MP4 يكسران فك التشفير وPNG/FFV1 لا.</figcaption></figure>
+<figure class="diagram"><a href="img/lossy.svg" target="_blank" rel="noopener"><img src="img/lossy.svg" alt="ليش JPG وMP4 يكسران فك التشفير وPNG وFFV1 لا: الصيغ ذات الفقد تغيّر 99% من بايتات الصورة المشفرة."></a><figcaption>ليش JPG وMP4 يكسران فك التشفير وPNG وFFV1 لا: الصيغ ذات الفقد تغيّر 99% من بايتات الصورة المشفرة.</figcaption></figure>
 <div class="box err"><div class="boxtitle">أخطاء شائعة</div><ul>
-<li><b>لم أجد الصورة</b> → ضعي أي صورة باسم <code>photo.jpg</code> بجانب الملف (المرفقة بالمجلد صورة عامة من ناسا).</li>
+<li><b>لم أجد الصورة</b> → ضعي أي صورة باسم <code>photo.jpg</code> بجانب الملف (المرفقة بالمجلد صورة عامة من ناسا ضمن عيّنات مكتبة scikit-image).</li>
 <li><b>رجعت False بعد فك التشفير</b> → تأكدي أنك ما غيّرتِ chaos.py، وأن المفتاح نفسه بالاتجاهين (نفس كلمة السر ونفس رقم الفريم).</li>
 <li><b>OverflowError أو أرقام غريبة</b> → صار معك لو أضفتِ أرقاماً إلى مصفوفة uint8 مباشرة؛ 250 + 10 يعطي 4 مو 260. لهذا الكود يحوّل إلى int قبل الجمع ثم يأخذ mod 256.</li>
 <li><b>بطيء</b> → numba مو منصّبة. راح تشوفين الفرق بالأرقام بالتجربة الجاية.</li></ul></div>
-<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://inventivehq.com/blog/what-is-xor-cipher-encryption" target="_blank" rel="noopener">مقال: ما هو تشفير XOR</a>: ليش XOR بالذات؟ لأن تطبيقه مرتين يرجع الأصل. 5 دقائق.</li><li><a href="https://www.boot.dev/blog/computer-science/one-time-pad-cipher" target="_blank" rel="noopener">boot.dev: شرح One-Time Pad وXOR</a>: الفكرة الأعمق: مفتاح بطول الرسالة يُستخدم مرة وحدة. التشفير الفوضوي يقلّدها بمفتاح قصير يولّد سلسلة طويلة.</li><li><a href="https://github.com/kunal9922/EncryptionAndDecryptionUsingChaoticKeySequence" target="_blank" rel="noopener">مستودع GitHub: Encryption And Decryption Using Chaotic Key Sequence</a>: كود شخص ثاني بنفس الفكرة بس أبسط (XOR فقط). قارنيه بـ chaos.py حتى تشوفين شنو تضيف البعثرة والانتشار.</li><li><a href="https://arxiv.org/pdf/1304.2612" target="_blank" rel="noopener">Zhang وآخرون: بحث التشفير الفوضوي للصور</a>: منه أخذت طريقة التحويل floor(x·10⁸) mod 256. للاستشهاد بالتقرير.</li></ul></div>
+<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://inventivehq.com/blog/what-is-xor-cipher-encryption" target="_blank" rel="noopener">مقال: ما هو تشفير XOR</a>: ليش XOR بالذات؟ لأن تطبيقه مرتين يرجع الأصل. 5 دقائق.</li><li><a href="https://www.boot.dev/blog/computer-science/one-time-pad-cipher" target="_blank" rel="noopener">boot.dev: شرح One-Time Pad وXOR</a>: الفكرة الأعمق: مفتاح بطول الرسالة يُستخدم مرة وحدة. التشفير الفوضوي يقلّدها بمفتاح قصير يولّد سلسلة طويلة.</li><li><a href="https://github.com/kunal9922/EncryptionAndDecryptionUsingChaoticKeySequence" target="_blank" rel="noopener">مستودع GitHub: Encryption And Decryption Using Chaotic Key Sequence</a>: كود شخص ثاني بنفس الفكرة بس أبسط. قارنيه بـ chaos.py حتى تشوفين شنو تضيف جولتا الانتشار واشتقاق المفتاح لكل فريم.</li><li><a href="https://arxiv.org/pdf/1304.2612" target="_blank" rel="noopener">Zhang وآخرون: بحث التشفير الفوضوي للصور</a>: منه أخذت طريقة التحويل floor(x·10⁸) mod 256. للاستشهاد بالتقرير.</li></ul></div>
 
 <h2 id="lab5"><span class="num">5</span>شفّري فيديو كاملاً</h2>
 <div class="goal"><b>الهدف:</b> كل فريم بمفتاحه، الحفظ بترميز بدون فقد، ثم تلعبين دور المستقبل: تقرأين الملف المشفر وتفكّينه وتتأكدين أن 120 فريم من 120 رجعوا مطابقين. وتشوفين ثلاث حقائق عملية ما تنذكر بالأبحاث: السرعة، الحجم، وفرق numba.</div>
@@ -559,15 +562,15 @@ print(&quot;المشفر أكبر لأن الضوضاء لا تنضغط. هذا 
 
 (نفس الكود بدون numba:)  شُفّر 120 فريم في 186.2 ثانية  =  0.6 FPS   ← أبطأ 8 مرات</pre></div>
 <figure class="diagram"><a href="img/lab5_frames.jpg" target="_blank" rel="noopener"><img src="img/lab5_frames.jpg" alt="الفريم 60: الأصل، المشفر كما حُفظ في encrypted.avi، والمفكوك عند المستقبل. المفكوك مطابق للأصل بكل بايت (np.array_equal رجعت True)."></a><figcaption>الفريم 60: الأصل، المشفر كما حُفظ في encrypted.avi، والمفكوك عند المستقبل. المفكوك مطابق للأصل بكل بايت (np.array_equal رجعت True).</figcaption></figure>
-<div class="box why"><div class="boxtitle">ليش؟</div><p><b>مفتاح لكل فريم:</b> لو استخدمتِ نفس السلسلة لكل الفريمات، فالفريمان المتتاليان متشابهان جداً، ومن يطرحهما من بعض يحصل على فرق الصورتين الأصليتين ويبدأ يكشف الحركة والأشكال بدون مفتاح. SHA-256 مع رقم الفريم يعطي كل فريم سلسلة مستقلة من نفس كلمة السر، والمستقبل يعيد اشتقاقها لأنه يعرف رقم الفريم.</p>
+<div class="box why"><div class="boxtitle">ليش؟</div><p><b>مفتاح لكل فريم:</b> لو استخدمتِ نفس السلسلة لكل الفريمات، فالفريمان المتتاليان متشابهان جداً، ومن يقارن المشفرين يستنتج مواضع التغيير بينهما ومنها الحركة بدون مفتاح، ولو عرف محتوى فريم واحد (صورة ثابتة للمكان الفارغ مثلاً) يستخرج منه المفتاح ويفك كل الفريمات. SHA-256 مع رقم الفريم يعطي كل فريم سلسلة مستقلة من نفس كلمة السر، والمستقبل يعيد اشتقاقها لأنه يعرف رقم الفريم.</p>
 <p><b>FFV1:</b> ترميز فيديو بدون فقد مدمج بـ OpenCV؛ يحفظ كل بايت كما هو. mp4v وXVID وH.264 كلها مع فقد وتكسر فك التشفير مثل JPG بالتجربة السابقة. الثمن: الحجم. الفريم المشفر 921,600 بايت لا ينضغط لأنه ضوضاء، فـ 120 فريم = 110 ميغابايت خام (والملف طلع 122 مع بيانات الترميز)، أي 28 ضعف الأصل. بالتقرير اكتبي الرقم واقترحي الحلول: وضع الوجوه (تشفير جزء صغير فقط، التجربة الجاية)، أو خفض الدقة، أو ضغط الفريم بدون فقد قبل التشفير.</p>
 <p><b>numba:</b> حلقة Python العادية تنفذ ملايين العمليات لكل فريم ببطء؛ numba تترجم الدالة إلى كود آلة بأول نداء (لهذا أول فريم يأخذ ثانية إضافية). كل الي سويناه حطينا <code>@njit</code> فوق الدوال. الـ GPU ما يفيد هنا لأن الانتشار متسلسل (كل بايت ينتظر الي قبله).</p></div>
 <figure class="diagram"><a href="img/frame-key.svg" target="_blank" rel="noopener"><img src="img/frame-key.svg" alt="اشتقاق مفتاح مستقل لكل فريم (ولكل وجه) من كلمة سر واحدة، وهو بالضبط ما تفعله &lt;code&gt;frame_key&lt;/code&gt; و&lt;code&gt;_streams&lt;/code&gt; في &lt;code&gt;chaos.py&lt;/code&gt;."></a><figcaption>اشتقاق مفتاح مستقل لكل فريم (ولكل وجه) من كلمة سر واحدة، وهو بالضبط ما تفعله <code>frame_key</code> و<code>_streams</code> في <code>chaos.py</code>.</figcaption></figure>
 <div class="box err"><div class="boxtitle">أخطاء شائعة</div><ul>
-<li><b>لم يُفتح الملف للكتابة بترميز FFV1</b> → نادر مع opencv-python من pip. البديل المضمون: احفظي كل فريم مشفر كـ PNG داخل مجلد (<code>cv2.imwrite(f"enc/{i:05d}.png", enc)</code>) واقرأيها بالترتيب عند المستقبل.</li>
+<li><b>لم يُفتح الملف للكتابة بترميز FFV1</b> → نادر مع opencv-python من pip. البديل المضمون: احفظي كل فريم مشفر كـ PNG داخل مجلد: أنشئي المجلد مرة وحدة بـ <code>os.makedirs("enc", exist_ok=True)</code> ثم <code>cv2.imwrite(f"enc/{i:05d}.png", enc)</code> لكل فريم، واقرأيها بالترتيب عند المستقبل.</li>
 <li><b>رجعت 119/120 أو أقل</b> → غالباً كتبتِ الفيديو بترميز مع فقد، أو فتحتِ الملف المشفر ببرنامج عدّله. تأكدي أن fourcc هو FFV1 والامتداد .avi.</li>
 <li><b>الذاكرة امتلأت</b> → الكود يحفظ كل الفريمات الأصلية بقائمة للمقارنة؛ مع فيديو طويل بدّلي المقارنة بقراءة الأصل مرة ثانية فريماً فريماً.</li></ul></div>
-<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://dev.to/uglypeardata/lossless-vs-lossy-compression-the-core-difference-explained-40dg" target="_blank" rel="noopener">مقال dev.to: Lossless vs Lossy</a>: الفرق بين الضغط مع فقد وبدونه بصور ومثال، 5 دقائق.</li><li><a href="https://docs.python.org/3/library/hashlib.html" target="_blank" rel="noopener">Python: hashlib</a>: صفحة SHA-256 الرسمية، للتأكد من السطرين الي بـ frame_key.</li><li><a href="https://numba.pydata.org/numba-doc/dev/user/5minguide.html" target="_blank" rel="noopener">Numba: دليل الخمس دقائق</a>: كل الي تحتاجين تعرفينه عن @njit.</li></ul></div>
+<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://dev.to/uglypeardata/lossless-vs-lossy-compression-the-core-difference-explained-40dg" target="_blank" rel="noopener">مقال dev.to: Lossless vs Lossy</a>: الفرق بين الضغط مع فقد وبدونه بصور ومثال، 5 دقائق.</li><li><a href="https://docs.python.org/3/library/hashlib.html" target="_blank" rel="noopener">Python: hashlib</a>: صفحة SHA-256 الرسمية، للتأكد من السطرين الي بـ frame_key.</li><li><a href="https://numba.readthedocs.io/en/stable/user/5minguide.html" target="_blank" rel="noopener">Numba: دليل الخمس دقائق</a>: كل الي تحتاجين تعرفينه عن @njit.</li></ul></div>
 
 <h2 id="lab6"><span class="num">6</span>وضع خصوصية الوجوه</h2>
 <div class="goal"><b>الهدف:</b> كاشف وجوه جاهز (YuNet داخل OpenCV) يعطيك مربع كل وجه، تكبّرينه 20%، تشفّرين الي داخله فقط بنفس <code>chaos.py</code>، وتخزّنين مواقع المربعات حتى يقدر المخوّل يفكها.</div>
@@ -581,6 +584,7 @@ import chaos
 SOURCE = &quot;test_video.avi&quot;
 MASTER_KEY = &quot;zahraa-secret-2026&quot;
 MARGIN = 0.2                 # نكبّر مربع الوجه 20% من كل جهة (الشعر والذقن يكشفان الهوية أيضاً)
+BLUR = False                 # True = تضبيب الوجه بدل تشفيره (للمقارنة في التقرير؛ التضبيب لا يمكن عكسه)
 
 # ملفا الموديل موجودان في مجلد الكود (مصدرهما opencv_zoo على GitHub، الرابط في الدليل)
 # OpenCV 5 -&gt; face_detection_yunet_2026may.onnx   |   OpenCV 4 -&gt; face_detection_yunet_2023mar.onnx
@@ -611,8 +615,11 @@ while True:
             x1 = max(0, int(x - MARGIN * fw)); y1 = max(0, int(y - MARGIN * fh))
             x2 = min(w, int(x + fw * (1 + MARGIN))); y2 = min(h, int(y + fh * (1 + MARGIN)))
             roi = frame[y1:y2, x1:x2]                           # قص منطقة الوجه
-            kx0, kr = chaos.frame_key(MASTER_KEY, i, k)         # مفتاح لكل وجه في كل فريم
-            frame[y1:y2, x1:x2] = chaos.encrypt(roi, kx0, kr)   # إرجاع المنطقة مشفرة
+            if BLUR:
+                frame[y1:y2, x1:x2] = cv2.GaussianBlur(roi, (51, 51), 0)   # تضبيب قوي، بدون مفتاح
+            else:
+                kx0, kr = chaos.frame_key(MASTER_KEY, i, k)     # مفتاح لكل وجه في كل فريم
+                frame[y1:y2, x1:x2] = chaos.encrypt(roi, kx0, kr)   # إرجاع المنطقة مشفرة
             csv_out.writerow([i, k, x1, y1, x2, y2])
     writer.write(frame)
     if i == 60:
@@ -623,32 +630,37 @@ while True:
     i += 1
 
 cap.release(); writer.release(); meta.close(); cv2.destroyAllWindows()
-print(f&quot;فريمات فيها وجه مكشوف: {frames_with_face} / {i}&quot;)
+print(f&quot;فريمات اكتشف فيها الكاشف وجهاً واحداً على الأقل: {frames_with_face} / {i}&quot;)
 print(&quot;الفيديو: faces_encrypted.avi   |   مواقع الوجوه: faces_meta.csv&quot;)
 
-# ---- فك وجه واحد كتجربة (نفس ما سيفعله الطرف المخوّل) ----
+# ---- فك وجوه الفريم 60 كتجربة (نفس ما سيفعله الطرف المخوّل) ----
+if BLUR:
+    raise SystemExit(&quot;التضبيب لا يُعكس، فلا يوجد ما يُفك. هذا بالضبط الفرق الذي تذكرينه في التقرير.&quot;)
 rows = [r for r in csv.DictReader(open(&quot;faces_meta.csv&quot;)) if r[&quot;frame&quot;] == &quot;60&quot;]
 cap = cv2.VideoCapture(&quot;faces_encrypted.avi&quot;); cap.set(cv2.CAP_PROP_POS_FRAMES, 60); _, f60 = cap.read()
-for r in rows:
+for r in reversed(rows):            # بالترتيب المعكوس للتشفير، مهم إذا تداخل مربعا وجهين
     x1, y1, x2, y2 = int(r[&quot;x1&quot;]), int(r[&quot;y1&quot;]), int(r[&quot;x2&quot;]), int(r[&quot;y2&quot;])
     kx0, kr = chaos.frame_key(MASTER_KEY, 60, int(r[&quot;face&quot;]))
     f60[y1:y2, x1:x2] = chaos.decrypt(f60[y1:y2, x1:x2], kx0, kr)
 cv2.imwrite(&quot;lab6_face_decrypted.png&quot;, f60)
 print(&quot;الفريم 60 بعد فك الوجوه محفوظ باسم lab6_face_decrypted.png&quot;)</code></pre></div>
-<div class="box see"><div class="boxtitle">شنو المفروض تشوفين</div><pre class="output">فريمات فيها وجه مكشوف: 120 / 120
+<div class="box see"><div class="boxtitle">شنو المفروض تشوفين</div><pre class="output">فريمات اكتشف فيها الكاشف وجهاً واحداً على الأقل: 120 / 120
 الفيديو: faces_encrypted.avi   |   مواقع الوجوه: faces_meta.csv
 الفريم 60 بعد فك الوجوه محفوظ باسم lab6_face_decrypted.png</pre></div>
 <figure class="diagram"><a href="img/lab6_pair.jpg" target="_blank" rel="noopener"><img src="img/lab6_pair.jpg" alt="يسار: الفريم كما يُحفظ ويُرسل، الوجهان فقط ضوضاء والباقي واضح. يمين: نفس الفريم بعد ما فك المخوّل الوجهين بالمفتاح ومواقع المربعات من ملف CSV."></a><figcaption>يسار: الفريم كما يُحفظ ويُرسل، الوجهان فقط ضوضاء والباقي واضح. يمين: نفس الفريم بعد ما فك المخوّل الوجهين بالمفتاح ومواقع المربعات من ملف CSV.</figcaption></figure>
-<div class="box why"><div class="boxtitle">ليش؟</div><p>YOLO يكشف الشخص من جسمه كله، فالتتبع يستمر عادياً حتى لو الوجه ضوضاء. هذا الي يخلي الوضع مفيداً: المراقبة شغالة والهوية محمية.</p>
+<p>ملف الشرح يقول «تشفير الوجه أو تضبيبه» (encrypt or blur). لهذا في الكود خيار <code>BLUR = True</code> يضبّب الوجه بـ <code>GaussianBlur</code> بدل تشفيره. جرّبيه مرة وحدة حتى تشوفين الفرق بعينك: التضبيب أسرع وما يحتاج مفتاح، لكنه <b>لا يُعكس</b>؛ الجهة المخوّلة ما تقدر ترجع الوجه أبداً. هذا هو سبب اختيار التشفير بالمشروع، وهي مقارنة جاهزة لفصل النتائج.</p>
+<figure class="diagram"><a href="img/lab6_blur_vs_encrypt.jpg" target="_blank" rel="noopener"><img src="img/lab6_blur_vs_encrypt.jpg" alt="نفس الفريم بالطريقتين: يسار تشفير فوضوي (يُعكس بالمفتاح)، يمين تضبيب GaussianBlur (لا يُعكس)."></a><figcaption>نفس الفريم بالطريقتين: يسار تشفير فوضوي (يُعكس بالمفتاح)، يمين تضبيب GaussianBlur (لا يُعكس).</figcaption></figure>
+<div class="box why"><div class="boxtitle">ليش؟</div><p>في نظامنا التتبع يصير على الفريم الأصلي قبل التشفير (التجربة 8)، فهو لا يتأثر أصلاً. وحتى لو احتاج أحد يتتبع على الفيديو المشفر الوجوه، YOLO يكشف الشخص من جسمه كله: جربته على faces_encrypted.avi فأعطى 233 كشفاً للأشخاص من 240 (97%) ونفس الرقمين 1 و2. هذا الي يخلي الوضع مفيداً: المراقبة شغالة والهوية محمية.</p>
 <p><b>ليش YuNet:</b> Haar Cascade القديم (2001) يعطي كشوفات خاطئة كثيرة ويفشل مع الوجه الجانبي. YuNet موديل صغير (أقل من ربع ميغابايت) مدمج بـ OpenCV، يشتغل على المعالج، ويرجع لكل وجه 15 رقماً: 4 للمربع، 10 لخمس نقاط (العينان، الأنف، طرفا الفم)، وواحد للثقة. «YOLO-face» المذكور بملف الشرح ليس موديلاً رسمياً من Ultralytics، فـ YuNet أضمن وأسهل تبريراً بالتقرير.</p>
 <p><b>التكبير 20%:</b> الكاشف أحياناً يقص الجبهة أو الذقن، والشعر والأذنان يكشفان الهوية أيضاً. <b>القص لحدود الصورة:</b> بدونه ينهار الكود لمّا يكون الوجه قرب الحافة.</p>
 <p><b>ملف CSV:</b> المستقبل ما يعرف وين كانت الوجوه إلا إذا قلتِ له، لهذا نخزّن (رقم الفريم، رقم الوجه، المربع). هذا الملف لا يكشف هوية أحد لكنه يكشف مكان الوجوه، فاذكري بالتقرير أنه يمكن تشفيره أيضاً. <b>ومفتاح لكل وجه</b> (الرقم الثالث في frame_key) حتى لا تُشفَّر وجوه مختلفة بنفس السلسلة.</p></div>
 <figure class="diagram"><a href="img/ad1ce91d-0f48.png" target="_blank" rel="noopener"><img src="img/ad1ce91d-0f48.png" alt="مخطط وضع الوجوه: مربع الوجه المكبّر هو الجزء الوحيد الذي يصير ضوضاء. (الرسم يكتب هامش 15% والكود يستخدم 20%؛ أي نسبة بين 10 و20% مناسبة.)"></a><figcaption>مخطط وضع الوجوه: مربع الوجه المكبّر هو الجزء الوحيد الذي يصير ضوضاء. (الرسم يكتب هامش 15% والكود يستخدم 20%؛ أي نسبة بين 10 و20% مناسبة.)</figcaption></figure>
 <div class="box err"><div class="boxtitle">أخطاء شائعة</div><ul>
 <li><b>can't open onnx / FaceDetectorYN error</b> → ملف الموديل مو بنفس المجلد. انسخي الملفين من مجلد code.</li>
-<li><b>الكاشف يفوّت الوجه ببعض الفريمات</b> (وجه جانبي، إضاءة ضعيفة) → بهالفريمات يطلع الوجه مكشوفاً. هذه أهم نقطة ضعف بالمشروع، وقياسها بالتجربة 7 (نسبة الفريمات المكشوفة). حل عملي: احتفظي بآخر مربع لنفس الشخص لـ 5 فريمات إذا فشل الكشف.</li>
+<li><b>الكاشف يفوّت الوجه ببعض الفريمات</b> (وجه جانبي، إضاءة ضعيفة) → بهالفريمات يُخزَّن الوجه بدون تشفير. هذه أهم نقطة ضعف بالمشروع، وقياسها بالتجربة 7. انتبهي: الرقم الذي يطبعه الكود (فريمات فيها وجه واحد على الأقل) لا يكفي لو كان بالفريم وجهان واكتُشف واحد؛ عدّي الوجوه المكتشفة مقابل العدد الحقيقي. حل عملي: احتفظي بآخر مربع لنفس الشخص لـ 5 فريمات إذا فشل الكشف.</li>
 <li><b>faces is None</b> → طبيعي بالفريمات بدون وجوه؛ الشرط موجود بالكود.</li>
-<li><b>الفك يرجع ضوضاء</b> → المربع المستخدم بالفك مو نفس المربع المستخدم بالتشفير بالضبط (بعد التكبير والقص). لهذا نخزّن المربع النهائي بالـ CSV مو مربع الكاشف الأصلي.</li></ul></div>
+<li><b>الفك يرجع ضوضاء</b> → المربع المستخدم بالفك مو نفس المربع المستخدم بالتشفير بالضبط (بعد التكبير والقص). لهذا نخزّن المربع النهائي بالـ CSV مو مربع الكاشف الأصلي.</li>
+<li><b>وجهان متداخلان</b> (شخصان متلاصقان) → التشفير يصير بالتسلسل، فالفك لازم يكون بالترتيب المعكوس (آخر وجه شُفّر يُفك أولاً). الكود يفعل ذلك بـ <code>reversed(...)</code>؛ لا تشيليها.</li></ul></div>
 <div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://learnopencv.com/face-blur-pixelation-opencv-yunet/" target="_blank" rel="noopener">LearnOpenCV: تضبيب الوجوه في الوقت الحقيقي مع YuNet</a>: يسوي بالضبط نصف تجربتك (كشف ثم blur). أنتِ بدّلتِ الـ blur بالتشفير.</li><li><a href="https://docs.opencv.org/4.x/d0/dd4/tutorial_dnn_face.html" target="_blank" rel="noopener">درس OpenCV الرسمي: FaceDetectorYN</a>: شرح الـ 15 رقماً وكود كامل. تجاوزي جزء التعرف على الوجوه (SFace)، مو مطلوب.</li><li><a href="https://learnopencv.com/face-detection-opencv-dlib-and-deep-learning-c-python/" target="_blank" rel="noopener">LearnOpenCV: مقارنة كواشف الوجوه</a>: ليش Haar قديم وليش YuNet الخيار الحالي، بصور مقارنة.</li></ul></div>
 
 <h2 id="lab7"><span class="num">7</span>أرقام التقرير</h2>
@@ -755,13 +767,13 @@ Encryption speed 640x480 color                           6.8 FPS
 <tr><td>Key sensitivity</td><td>فك بمفتاح يختلف بـ 10⁻¹⁰: كم نسبة البكسلات الخاطئة؟</td><td>قرب 99.6%</td></tr>
 <tr><td>FPS</td><td>كم فريم تشفّرين بالثانية</td><td>حسب جهازك؛ اكتبي مواصفات المعالج جنبه</td></tr></table>
 <p>ملاحظة صريحة: NPCR عندنا يطلع بين 99.6 و100 حسب موقع البكسل المتغير، لأن الانتشار بالجمع يمرر أي تغيير بشكل مؤكد. القيم المثالية (99.6094 و33.4635) هي ما تعطيه صورتان عشوائيتان مستقلتان. شغّلي التجربة على 5 صور مختلفة واكتبي المتوسط بالتقرير مو رقماً واحداً.</p>
-<p><b>قياسات التتبع:</b> MOTA وIDF1 وHOTA تحتاج بيانات معلّمة يدوياً (ground truth) مثل MOT17. أبسط بديل مقبول لمشروع تخرج: خذي مقطعاً قصيراً (300 فريم)، عدّي بإيدك كم مرة تبدّل رقم شخص (ID switches)، واكتبي FPS للتتبع وحده ومع التشفير. <b>وقياس الخصوصية:</b> نسبة الفريمات الي ظهر فيها وجه بدون تشفير (التجربة 6 تطبع العدد الذي تحتاجينه)؛ هذا قياس مباشر لهدف المشروع.</p></div>
+<p><b>قياسات التتبع:</b> MOTA وIDF1 وHOTA تحتاج بيانات معلّمة يدوياً (ground truth) مثل MOT17. أبسط بديل مقبول لمشروع تخرج: خذي مقطعاً قصيراً (300 فريم)، عدّي بإيدك كم مرة تبدّل رقم شخص (ID switches)، واكتبي FPS للتتبع وحده ومع التشفير. <b>وقياس الخصوصية:</b> نسبة الوجوه التي خرجت بدون تشفير = (عدد الوجوه الحقيقية في المقطع − عدد الوجوه التي اكتشفها الكاشف وشفّرها) ÷ عدد الوجوه الحقيقية. تحتاجين العدد الحقيقي يدوياً على مقطع قصير (مثلاً 300 فريم × عدد الأشخاص)، وعدد المكتشفة من ملف faces_meta.csv. هذا قياس مباشر لهدف المشروع.</p></div>
 <figure class="diagram"><a href="img/ce156867-6e0d.png" target="_blank" rel="noopener"><img src="img/ce156867-6e0d.png" alt="فكرة NPCR وUACI بصورة واحدة."></a><figcaption>فكرة NPCR وUACI بصورة واحدة.</figcaption></figure>
 <div class="box err"><div class="boxtitle">أخطاء شائعة</div><ul>
 <li><b>NPCR قرب 50% أو أقل بكثير</b> → عدّلتِ chaos.py وشلتِ الجولة الخلفية، أو تقارنين صورتين بمفتاحين مختلفين بدل صورتين بنفس المفتاح.</li>
 <li><b>Entropy أقل من 7.99</b> → الصورة صغيرة جداً (أقل من 100×100) فالإحصاء غير دقيق. استخدمي صوراً 512×512 أو أكبر.</li>
 <li><b>FPS متذبذب</b> → شغّلي القياس بعد إغلاق البرامج الثانية، وخذي متوسط 30 فريماً مثل الكود.</li></ul></div>
-<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)" target="_blank" rel="noopener">ويكيبيديا: Entropy (information theory)</a>: معنى الإنتروبي وصيغتها الي بالكود.</li><li><a href="https://arxiv.org/pdf/0710.5455" target="_blank" rel="noopener">Li وAlvarez: مسح عن التشفير الفوضوي وتحليله</a>: كيف يُقيَّم التشفير الفوضوي وكيف يُكسر. للاستشهاد ولفهم أسئلة المناقشة.</li><li><a href="https://github.com/JonathonLuiten/HOTA-metrics" target="_blank" rel="noopener">مستودع TrackEval على GitHub</a>: إذا قررتِ حساب MOTA/HOTA على MOT17 فعلاً؛ اختياري.</li><li><a href="https://motchallenge.net/data/MOT17" target="_blank" rel="noopener">صفحة MOT17</a>: مجموعة بيانات التتبع المعلّمة، اختياري.</li></ul></div>
+<div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)" target="_blank" rel="noopener">ويكيبيديا: Entropy (information theory)</a>: معنى الإنتروبي وصيغتها الي بالكود.</li><li><a href="https://arxiv.org/abs/nlin/0311039" target="_blank" rel="noopener">Alvarez وLi: المتطلبات الأساسية لأنظمة التشفير الفوضوية (IJBC 2006)</a>: الورقة المرجعية لشروط التشفير الفوضوي الجيد، ومنها حجم المفتاح ومقاومة هجمات النص المختار. للاستشهاد ولفهم أسئلة المناقشة.</li><li><a href="https://github.com/JonathonLuiten/HOTA-metrics" target="_blank" rel="noopener">مستودع TrackEval على GitHub</a>: إذا قررتِ حساب MOTA/HOTA على MOT17 فعلاً؛ اختياري.</li><li><a href="https://motchallenge.net/data/MOT17" target="_blank" rel="noopener">صفحة MOT17</a>: مجموعة بيانات التتبع المعلّمة، اختياري.</li></ul></div>
 
 <h2 id="lab8"><span class="num">8</span>المرسل والمستقبل (المشروع كاملاً)</h2>
 <div class="goal"><b>الهدف:</b> ملفان يمثلان النظام كله. <code>sender.py</code> هو الجهاز الموثوق عند الكاميرا: يتتبع ثم يشفّر (الفريم كله أو الوجوه) ويحفظ الفيديو المشفر مع ملف المواقع. <code>receiver.py</code> هو شاشة المراقبة: بدون مفتاح يعرض التتبع فوق ضوضاء، ومع المفتاح يفك ويعرض كل شيء.</div>
@@ -781,12 +793,15 @@ MARGIN = 0.2
 
 model = YOLO(&quot;yolo26n.pt&quot;)
 cap = cv2.VideoCapture(SOURCE)
+if not cap.isOpened():
+    raise SystemExit(&quot;لم أستطع فتح المصدر. تأكدي من اسم الملف أو رقم الكاميرا.&quot;)
 w, h, fps = int(cap.get(3)), int(cap.get(4)), cap.get(cv2.CAP_PROP_FPS) or 24
 face_model = &quot;face_detection_yunet_2026may.onnx&quot; if cv2.__version__.startswith(&quot;5&quot;) else &quot;face_detection_yunet_2023mar.onnx&quot;
 faces_det = cv2.FaceDetectorYN.create(face_model, &quot;&quot;, (w, h), 0.6, 0.3, 50)
 
 writer = cv2.VideoWriter(&quot;stream_encrypted.avi&quot;, cv2.VideoWriter_fourcc(*&quot;FFV1&quot;), fps, (w, h))
-meta = csv.writer(open(&quot;stream_meta.csv&quot;, &quot;w&quot;, newline=&quot;&quot;))
+meta_file = open(&quot;stream_meta.csv&quot;, &quot;w&quot;, newline=&quot;&quot;)
+meta = csv.writer(meta_file)
 meta.writerow([&quot;frame&quot;, &quot;kind&quot;, &quot;id&quot;, &quot;label&quot;, &quot;x1&quot;, &quot;y1&quot;, &quot;x2&quot;, &quot;y2&quot;])
 # kind = &quot;track&quot;: مربع شخص من YOLO (للعرض فقط)     kind = &quot;face&quot;: مربع وجه مشفر (يحتاجه فك التشفير)
 
@@ -824,7 +839,7 @@ while True:
     writer.write(frame)
     i += 1
 
-cap.release(); writer.release()
+cap.release(); writer.release(); meta_file.close()
 print(f&quot;المرسل: {i} فريم في {time.time() - t0:.1f} ثانية، الوضع = {MODE}&quot;)
 print(&quot;الملفات: stream_encrypted.avi + stream_meta.csv   (أرسلي الاثنين للمستقبل، والمفتاح بطريقة آمنة منفصلة)&quot;)</code></pre></div>
 <div class="codewrap"><div class="codehead"><span>receiver.py</span><a class="dl" href="code/receiver.py" download>تنزيل الملف</a><button class="copy" type="button">نسخ</button></div><pre><code class="lang-python"># التجربة 8 (ب): المستقبل - شاشة المراقبة
@@ -846,6 +861,7 @@ cap = cv2.VideoCapture(&quot;stream_encrypted.avi&quot;)
 w, h, fps = int(cap.get(3)), int(cap.get(4)), cap.get(cv2.CAP_PROP_FPS) or 24
 out = cv2.VideoWriter(&quot;receiver_view.mp4&quot;, cv2.VideoWriter_fourcc(*&quot;mp4v&quot;), fps, (w, h))
 
+status = &quot;AUTHORIZED (decrypted)&quot; if MASTER_KEY else &quot;MONITOR (no key)&quot;
 i = 0
 while True:
     ok, frame = cap.read()
@@ -857,7 +873,7 @@ while True:
             x0, r = chaos.frame_key(MASTER_KEY, i)
             frame = chaos.decrypt(frame, x0, r)
         else:
-            for b in boxes[i]:
+            for b in reversed(boxes[i]):                     # عكس ترتيب التشفير (مهم عند تداخل وجهين)
                 if b[&quot;kind&quot;] == &quot;face&quot;:
                     x1, y1, x2, y2 = int(b[&quot;x1&quot;]), int(b[&quot;y1&quot;]), int(b[&quot;x2&quot;]), int(b[&quot;y2&quot;])
                     x0, r = chaos.frame_key(MASTER_KEY, i, int(b[&quot;id&quot;]))
@@ -870,8 +886,8 @@ while True:
             cv2.putText(frame, f&quot;id {b[&#x27;id&#x27;]}&quot;, (x1, max(20, y1 - 6)),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 120, 0), 2)
 
-    status = &quot;AUTHORIZED (decrypted)&quot; if MASTER_KEY else &quot;MONITOR (no key)&quot;
-    cv2.putText(frame, status, (10, h - 12), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+    cv2.rectangle(frame, (0, 0), (330, 34), (30, 30, 30), -1)          # خلفية داكنة لنص الحالة
+    cv2.putText(frame, status, (8, 24), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
     out.write(frame)
     if i == 60:
         cv2.imwrite(&quot;lab8_receiver_&quot; + (&quot;key&quot; if MASTER_KEY else &quot;nokey&quot;) + &quot;.png&quot;, frame)
@@ -892,7 +908,7 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 &gt; python receiver.py                      (MASTER_KEY = &quot;zahraa-secret-2026&quot;)
 المستقبل عرض 120 فريم كـ AUTHORIZED (decrypted). الفيديو: receiver_view.mp4</pre></div>
 <figure class="diagram"><a href="img/lab8_pair.jpg" target="_blank" rel="noopener"><img src="img/lab8_pair.jpg" alt="وضع الوجوه عند المستقبل. يسار: مراقب بدون مفتاح يشوف التتبع (id 1، id 2) والوجوه ضوضاء. يمين: مخوّل بالمفتاح يشوف كل شيء. تأكدت أن منطقة الوجه بعد الفك مطابقة للأصل بايتاً بايتاً."></a><figcaption>وضع الوجوه عند المستقبل. يسار: مراقب بدون مفتاح يشوف التتبع (id 1، id 2) والوجوه ضوضاء. يمين: مخوّل بالمفتاح يشوف كل شيء. تأكدت أن منطقة الوجه بعد الفك مطابقة للأصل بايتاً بايتاً.</figcaption></figure>
-<figure class="diagram"><a href="img/lab8_full_pair.jpg" target="_blank" rel="noopener"><img src="img/lab8_full_pair.jpg" alt="وضع الفريم الكامل. بدون مفتاح لا يُرى سوى مربعات التتبع فوق ضوضاء؛ المخوّل يرى الفريم كاملاً. قارني الحالتين بالتقرير: الأول خصوصية أعلى، الثاني مراقبة مفيدة بدون مفتاح."></a><figcaption>وضع الفريم الكامل. بدون مفتاح لا يُرى سوى مربعات التتبع فوق ضوضاء؛ المخوّل يرى الفريم كاملاً. قارني الحالتين بالتقرير: الأول خصوصية أعلى، الثاني مراقبة مفيدة بدون مفتاح.</figcaption></figure>
+<figure class="diagram"><a href="img/lab8_full_pair.jpg" target="_blank" rel="noopener"><img src="img/lab8_full_pair.jpg" alt="وضع الفريم الكامل. بدون مفتاح لا يُرى سوى مربعات التتبع فوق ضوضاء؛ المخوّل يرى الفريم كاملاً. قارني الوضعين بالتقرير: الفريم الكامل خصوصية أعلى، ووضع الوجوه مراقبة مفيدة بدون مفتاح."></a><figcaption>وضع الفريم الكامل. بدون مفتاح لا يُرى سوى مربعات التتبع فوق ضوضاء؛ المخوّل يرى الفريم كاملاً. قارني الوضعين بالتقرير: الفريم الكامل خصوصية أعلى، ووضع الوجوه مراقبة مفيدة بدون مفتاح.</figcaption></figure>
 <div class="box why"><div class="boxtitle">ليش؟</div><p><b>التتبع قبل التشفير، دائماً.</b> YOLO لا يرى شيئاً بصورة مشفرة. لهذا ملف الشرح الأصلي الي يقول «only encrypted frames are processed» خطأ تقنياً؛ الصحيح: «only encrypted frames are stored or transmitted». المعالجة على الجهاز الموثوق، والتشفير قبل الخروج منه.</p>
 <p><b>ملف المواقع (metadata):</b> المستقبل بدون مفتاح يحتاج مربعات التتبع حتى يرسمها، ومع المفتاح يحتاج مربعات الوجوه حتى يفكها. لهذا المرسل يكتب الاثنين بـ CSV. هذه هي «القناة الثانية» الي تنذكر بالأبحاث.</p>
 <p><b>«الإرسال» هنا حفظ بملف.</b> بالعرض النهائي تقدرين تشغّلين المرسل على لابتوب والمستقبل على لابتوب ثاني بنفس الشبكة بنقل الملفين، أو تستبدلين <code>writer.write</code> بإرسال بايتات الفريم عبر <code>socket</code> (وحدة Python مدمجة). الفكرة نفسها: البايتات الي تطلع من المرسل ما تتغير بالطريق.</p>
@@ -902,6 +918,33 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <li><b>مربعات التتبع تظهر بمكان خاطئ</b> → غيّرتِ دقة الفريم بين المرسل والمستقبل. المواقع بالبكسل تعتمد على نفس الدقة.</li>
 <li><b>بطيء (4 FPS)</b> → هذا المعالج الضعيف الي جربت عليه. على لابتوبك مع الكرت، YOLO يصير أسرع بكثير، أما التشفير فيبقى على المعالج (هنا 5 إلى 7 FPS على معالج بنواتين؛ على لابتوب حديث أتوقع أكثر، قيسيها بنفسك بالتجربة 7). لو احتجتِ أسرع: وضع الوجوه يشفّر جزءاً صغيراً من الفريم بس (نحو 2% بفيديو الاختبار)، أو خفّضي الدقة إلى 640×360.</li></ul></div>
 <div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://blog.roboflow.com/yolov8-tracking-and-counting/" target="_blank" rel="noopener">Roboflow: Track and Count Objects</a>: مثال يبني شيئاً فوق التتبع (عدّ الأشخاص). نفس الأسلوب الي استخدمناه بالمرسل.</li><li><a href="https://orbit.au.dk/object-recognition-detection-and-tracking-what-are-the-differences/" target="_blank" rel="noopener">مقال: الفرق بين التعرف والكشف والتتبع</a>: صفحة قصيرة توضح المصطلحات الثلاثة الي راح تُسألين عنها بالمناقشة.</li></ul></div>
+
+<h2 id="coverage">هل الورشة تغطي كل ما في الملفين؟</h2>
+<p>نعم، نفس الفكرة ونفس المراحل، مع تحسينات مكتوب سببها. الجدول يمر على كل بند في ملف الشرح وفي استمارة المقترح ويقول أين يُنفَّذ.</p>
+<h3>ملف الشرح (Idea / Pipeline / Modules)</h3>
+<table><tr><th>البند في الملف</th><th>أين في الورشة</th><th>ملاحظة</th></tr>
+<tr><td>Detect people / Object Detection (YOLO / OpenCV)</td><td>التجربة 2، والتجربة 8 (<code>classes=[0]</code> للأشخاص فقط)</td><td>الملف يكتب YOLOv8 والاستمارة «latest version»؛ استخدمنا YOLO26 (أحدث إصدار صادر) واذكري الاسم صراحة بالتقرير</td></tr>
+<tr><td>Track movement / Object Tracking (CSRT / KCF / DeepSORT)</td><td>التجربة 2 (BoT-SORT عبر <code>model.track</code>)</td><td>CSRT وKCF يتتبعان جسماً واحداً فقط وغير موجودين في OpenCV 5 الذي ينصّبه pip اليوم، فاذكريهما في مراجعة الأدبيات فقط. BoT-SORT من عائلة DeepSORT (كشف ثم مطابقة مع Kalman filter)</td></tr>
+<tr><td>Camera Input / Frame Extraction</td><td>التجربة 1</td><td>الفريمات تُقرأ في البداية بـ VideoCapture؛ «Frame Extraction» في الملف تعني أخذ الفريم بعد المعالجة لتشفيره</td></tr>
+<tr><td>Chaotic Image Encryption: Logistic map (recommended) / Henon map (advanced)</td><td>التجربتان 3 و4 (<code>chaos.py</code>)</td><td>نفّذنا Logistic كما يوصي الملف؛ Hénon مشروحة في المرجع المطوّل كخطوة إضافية إن بقي وقت</td></tr>
+<tr><td>What gets encrypted: pixel values of image frames</td><td>التجربة 4 (بعثرة المواقع ثم تغيير القيم)</td><td>زيادة على الملف: جولتا انتشار حتى يصل NPCR إلى 99.6%</td></tr>
+<tr><td>Image becomes noise-like / cannot be understood without key</td><td>التجربة 4 (المفتاح الخاطئ يعطي 0.4% فقط من البكسلات الصحيحة) والتجربة 7</td><td>مقاسة بالأرقام لا بالوصف</td></tr>
+<tr><td>Encrypted Video Stream / Storage</td><td>التجربتان 5 و8</td><td>زيادة على الملف: مفتاح لكل فريم، وترميز بدون فقد، وقياس الحجم</td></tr>
+<tr><td>Privacy layer: only encrypted frames are processed / stored / transmitted</td><td>التجربة 8 (المرسل)</td><td>تصحيح: المعالجة (التتبع) تتم على الفريم الأصلي داخل الجهاز الموثوق؛ ما يُخزَّن ويُرسَل هو المشفر فقط</td></tr>
+<tr><td>Authorized Decryption / restores original video / shows tracked object normally</td><td>التجربة 8 (المستقبل مع المفتاح) والتجربة 5</td><td>مُثبت: 120/120 فريم رجعوا مطابقين بايتاً بايتاً</td></tr>
+<tr><td>Secure Visualization</td><td>التجربة 8 (المستقبل بدون مفتاح يرى التتبع فقط)</td><td>الصورتان في التجربة 8 هما بالضبط هذه النقطة</td></tr>
+<tr><td>Face Privacy Mode: Face Detection (Haar / DNN / YOLO-face) → face box → encrypt ONLY face area OR blur → rest unchanged → tracking continues</td><td>التجربة 6 (+ خيار BLUR) والتجربة 8 بوضع face</td><td>استخدمنا YuNet بدل Haar لأنه أدق وأحدث ومدمج في OpenCV؛ «YOLO-face» ليس موديلاً رسمياً. التضبيب موجود كخيار للمقارنة</td></tr>
+<tr><td>Applications: smart surveillance, hospitals, universities, public buildings</td><td>الفكرة بدقيقتين</td><td>تنفع لمقدمة التقرير ولتبرير أهداف SDG</td></tr></table>
+<h3>استمارة المقترح (Aim / Outcomes / Equipment)</h3>
+<table><tr><th>البند</th><th>أين في الورشة</th><th>ملاحظة</th></tr>
+<tr><td>Develop an object detection and tracking system using deep learning</td><td>التجربتان 2 و8</td><td>YOLO هو جزء التعلم العميق؛ لا تدريب مطلوب</td></tr>
+<tr><td>Implement face privacy protection techniques</td><td>التجربة 6</td><td>تقنيتان: تشفير (يُعكس) وتضبيب (لا يُعكس)</td></tr>
+<tr><td>Integrate chaotic image encryption into the tracking system</td><td>التجربة 8</td><td>ملفان: sender.py وreceiver.py يكوّنان النظام الكامل</td></tr>
+<tr><td>Evaluate tracking accuracy and encryption performance</td><td>التجربة 7</td><td>التشفير: Entropy, Correlation, NPCR, UACI, حساسية المفتاح, FPS. التتبع: عدّ تبدّل الأرقام يدوياً على مقطع قصير، وMOT17 اختياري</td></tr>
+<tr><td>Understand the importance of privacy-preserving intelligent surveillance systems</td><td>الفكرة بدقيقتين + «حدود لازم تذكرينها»</td><td>هدف تعلّمي؛ يغطيه فصل المقدمة. مراجعة الاستمارة تقترح صياغة بديلة قابلة للقياس</td></tr>
+<tr><td>Project type: Practical (Simulation)</td><td>التجربة 8</td><td>نظام يعمل ببرنامج على حاسبة، بلا قطعة إلكترونية</td></tr>
+<tr><td>Equipment: PC with GPU, Python, OpenCV, YOLO (latest), public datasets</td><td>التجربة 0 (الكرت اختياري ويسرّع YOLO فقط)؛ البيانات: MOT17 للتتبع وWIDER FACE للوجوه كأسماء جاهزة للاستمارة، وفيديوهاتك الخاصة للتجارب</td><td>التشفير يعمل على المعالج لا على الكرت</td></tr>
+<tr><td>SDGs 9, 11, 16</td><td><a href="review.html">صفحة مراجعة الاستمارة</a></td><td>فيها العناوين الرسمية وجملة تبرير لكل هدف، وتصحيح الأخطاء اللغوية في الاستمارة</td></tr></table>
 
 <h2 id="report">من التجارب إلى التقرير والمناقشة</h2>
 <h3>أين تذهب كل تجربة بالتقرير</h3>
@@ -923,20 +966,20 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <tr><td>9 و10</td><td>كتابة التقرير والعرض، وتجهيز عرض حي بلابتوبين</td><td>التسليم</td></tr></table>
 <h3>أسئلة متوقعة بالمناقشة وجوابها بسطرين</h3>
 <ol>
-<li><b>ليش تشفير فوضوي مو AES؟</b> AES معيار صناعي وأقوى أمنياً، لكن التشفير الفوضوي يشتغل على البكسلات مباشرة بعمليات بسيطة، ويسمح بتشفير جزء من الصورة (الوجه) بسهولة، وهو موضوع بحثي بمعالجة الصور. اذكري بوضوح أن المشروع يدرس هذا الأسلوب ولا يدّعي أنه بديل لـ AES.</li>
-<li><b>شنو المفتاح وكم حجمه؟</b> كلمة سر تمر بـ SHA-256 وتعطي x<sub>0</sub> وr. الأعداد العشرية بالحاسبة فيها قرابة 15 خانة معنوية، فكل متغير يعطي نحو 10¹⁵ قيمة، والاثنان معاً نحو 10³⁰ ≈ 2¹⁰⁰، وهذا على حافة الحد الأدنى المتعارف عليه بالأبحاث (2¹⁰⁰). حصر r بين 3.99 و4 يقلّله قليلاً. قولي الرقم وقولي إن دقة الأعداد العشرية هي الحد الفعلي للطريقة.</li>
+<li><b>ليش تشفير فوضوي مو AES؟</b> AES معيار صناعي وأقوى أمنياً، ويقدر هو أيضاً يشفّر منطقة من الصورة (بنمط CTR مثلاً). قوة حجتك ليست «الفوضوي أسهل» بل: هو موضوع بحثي قائم في تشفير الصور، يعمل على البكسلات مباشرة بعمليات بسيطة ويبقي الناتج صورة بنفس الحجم والنوع بلا حشو، والمشروع يبني هذا الأسلوب داخل نظام تتبع ويقيسه. اذكري بوضوح أن المشروع يدرس هذا الأسلوب ولا يدّعي أنه بديل لـ AES.</li>
+<li><b>شنو المفتاح وكم حجمه؟</b> كلمة سر تمر بـ SHA-256 وتعطي x<sub>0</sub> وr. عدد القيم الممكنة بدقة الأعداد العشرية (double): نحو 10¹⁶ لـ x<sub>0</sub> بين 0.1 و0.9، ونحو 2×10¹³ لـ r بين 3.99 و4، أي نحو 3×10²⁹ ≈ 2⁹⁸ معاً، وهذا أقل بقليل من الحد 2¹⁰⁰ المتعارف عليه في الأبحاث (Alvarez وLi). والأهم: السر الفعلي هو كلمة السر، فالمهاجم يجرّب كلمات سر لا أعداداً؛ لذلك اختاري كلمة سر طويلة عشوائية (20 حرفاً فأكثر). قولي الرقمين وقولي إن دقة الأعداد العشرية هي الحد الفعلي للطريقة، وإن Hénon (المرجع المطوّل) طريقة لتوسيعه.</li>
 <li><b>ليش التتبع قبل التشفير؟</b> لأن YOLO لا يرى بصورة مشفرة. التشفير يحمي الفريم عند الخزن والإرسال مو أثناء المعالجة.</li>
 <li><b>شلون تضمنين أن المستقبل يفك بالضبط؟</b> ترميز بدون فقد (FFV1/PNG) + نفس كلمة السر + رقم الفريم داخل المفتاح. وأثبتُّه بالتجربة 5: 120/120 مطابقة.</li>
 <li><b>شنو يصير لو فوّت الكاشف وجهاً؟</b> يظهر مكشوفاً بذلك الفريم. قسته كنسبة وذكرت الحل (الاحتفاظ بآخر مربع لعدة فريمات).</li>
 <li><b>ليش الفيديو المشفر أكبر؟</b> الضوضاء لا تنضغط. وضع الوجوه يحل أغلب المشكلة.</li>
-<li><b>هل المشروع ذكاء اصطناعي؟</b> كاشف الأشخاص فقط (شبكة عصبية جاهزة). التتبع والتشفير برمجة ورياضيات.</li>
+<li><b>هل المشروع ذكاء اصطناعي؟</b> كاشفا الأشخاص والوجوه فقط (شبكتان عصبيتان جاهزتان، بلا تدريب). التتبع والتشفير برمجة ورياضيات.</li>
 <li><b>شنو الفرق بين NPCR وUACI؟</b> الأول كم بكسل تغير، الثاني كم مقدار التغير. الاثنان يقيسان أثر تغيير بكسل واحد بالأصل.</li>
 </ol>
 
 <h2 id="limits">حدود لازم تذكرينها بنفسك</h2>
 <p>اللجنة تحترم الطالب الي يعرف حدود شغله أكثر من الي يدّعي الكمال. هذه خمس نقاط اكتبيها بفصل الاستنتاجات قبل ما يسألونك عنها:</p>
 <ol>
-<li><b>الأمان:</b> الخوارزمية من عائلة البعثرة والانتشار بخريطة logistic، وهناك أبحاث كسرت خوارزميات مشابهة بهجمات النص المختار (chosen-plaintext)، خصوصاً عندما يُستخدم نفس المفتاح لأكثر من صورة. اشتقاق مفتاح لكل فريم يخفف هذا لكنه لا يجعلها بمستوى AES. المصدر: <a href="https://arxiv.org/pdf/1912.12915">Ma وLi وOu</a> و<a href="https://arxiv.org/pdf/0710.5455">Li وAlvarez</a>.</li>
+<li><b>الأمان:</b> الخوارزمية من عائلة البعثرة والانتشار بخريطة logistic، وهناك أبحاث كسرت خوارزميات مشابهة بهجمات النص المختار (chosen-plaintext)، خصوصاً عندما يُستخدم نفس المفتاح لأكثر من صورة. اشتقاق مفتاح لكل فريم يخفف هذا لكنه لا يجعلها بمستوى AES. المصدر: <a href="https://arxiv.org/pdf/1912.12915">Ma وLi وOu (كسر خوارزمية صور فوضوية)</a> و<a href="https://arxiv.org/abs/nlin/0311039">Alvarez وLi (المتطلبات الأساسية)</a>.</li>
 <li><b>دقة الحاسبة:</b> خريطة logistic بالأعداد العشرية ذات 53 بت تدخل أحياناً بدورات قصيرة، ونوافذ الدورية قرب r = 3.83. حصرنا r بين 3.99 و4 ورمينا أول 1000 قيمة، وهذا تخفيف لا حل جذري. البديل بالأبحاث: خرائط ذات بعدين (Hénon) أو حسابات بأعداد صحيحة.</li>
 <li><b>كاشف الوجوه:</b> يفوّت الوجه الجانبي والبعيد والمعتم؛ نسبة الفريمات المكشوفة هي القياس الصادق.</li>
 <li><b>السرعة والحجم:</b> التشفير على المعالج وليس على كرت الشاشة (5 إلى 7 FPS على 640×480 بالمعالج الضعيف الذي جُرّب عليه؛ اكتبي رقم جهازك)، والفيديو المشفر لا ينضغط. مناسب للتخزين والبث بدقة متوسطة، وليس لـ 4K.</li>
@@ -944,7 +987,7 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 </ol>
 <p>وملاحظة على الترخيص: Ultralytics YOLO بترخيص AGPL-3.0، مناسب للمشاريع الأكاديمية والمفتوحة؛ الاستخدام التجاري المغلق يحتاج ترخيصاً منهم. جملة واحدة بالتقرير تكفي.</p>
 
-<div class="en">
+<div class="en" lang="en">
 <h2 id="english">English: terms and ready sentences</h2>
 <p>The report and the defence are usually in English, so here is the vocabulary used in this guide and a few sentences you can adapt directly. The long bilingual reference version is <a href="reference.html">here</a> if you need full English explanations.</p>
 <h3>Terms</h3>
@@ -971,9 +1014,10 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <li>The system detects and tracks people with a pretrained Ultralytics YOLO26 model using the BoT-SORT tracker, then encrypts each frame, or only the detected face regions, with a logistic-map-based permutation-diffusion cipher before storage or transmission.</li>
 <li>Tracking is performed on the plaintext frame inside the trusted capture device; only encrypted frames are stored or transmitted.</li>
 <li>A distinct key (x0, r) is derived for every frame, and for every face within a frame, by hashing a master secret together with the frame and face indices using SHA-256.</li>
-<li>Encrypted frames are written with the lossless FFV1 codec, since any lossy compression destroys the diffusion chain and makes decryption impossible.</li>
+<li>Encrypted frames are written with the lossless FFV1 codec: a lossy codec rewrites almost every byte of a noise-like frame (JPEG changed 99.25% of the cipher bytes in our test), so decryption would return noise.</li>
 <li>Decryption was verified bit-exactly: all 120 frames of the test sequence were recovered with zero differing bytes.</li>
-<li>On a 512×512 test image the cipher reached an entropy of 7.999, adjacent-pixel correlations below 0.03, NPCR of 99.6 to 99.9% and UACI of 33.5%, with a key sensitivity of 99.6% for a 10⁻¹⁰ change in x0.</li>
+<li>On a 512×512 test image the cipher reached an entropy of 7.999, adjacent-pixel correlations below 0.03, NPCR of 99.6 to 100% and UACI of 33.5%, with a key sensitivity of 99.6% for a 10⁻¹⁰ change in x0.</li>
+<li>Face privacy mode offers two techniques: reversible chaotic encryption of the enlarged face box, and irreversible Gaussian blurring kept only as a baseline for comparison.</li>
 <li>Face privacy mode encrypts about 2% of the frame area in our tests, which keeps the encrypted stream compressible and leaves tracking unaffected because YOLO detects the body rather than the face.</li>
 <li>The main limitations are the security level of logistic-map ciphers against chosen-plaintext attacks, the finite precision of floating-point chaos, missed face detections, and the incompressibility of fully encrypted video.</li>
 </ul>
@@ -1010,11 +1054,11 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <li><a href="https://en.wikipedia.org/wiki/Logistic_map">Wikipedia: Logistic map</a> · <a href="https://en.wikipedia.org/wiki/H%C3%A9non_map">Hénon map</a></li>
 <li><a href="https://inventivehq.com/blog/what-is-xor-cipher-encryption">What is XOR cipher</a> · <a href="https://www.boot.dev/blog/computer-science/one-time-pad-cipher">boot.dev: One-Time Pad</a></li>
 <li><a href="https://arxiv.org/pdf/1304.2612">Zhang et al., chaotic image encryption (arXiv 1304.2612)</a></li>
-<li><a href="https://arxiv.org/pdf/0710.5455">Li &amp; Alvarez, survey of chaos-based cryptography and cryptanalysis</a></li>
+<li><a href="https://arxiv.org/abs/nlin/0311039">Alvarez &amp; Li, Some basic cryptographic requirements for chaos-based cryptosystems, Int. J. Bifurcation and Chaos 16(8), 2006 (arXiv nlin/0311039)</a></li>
 <li><a href="https://arxiv.org/pdf/1912.12915">Ma, Li &amp; Ou, cryptanalysis of a chaotic image cipher</a></li>
 <li><a href="https://cdnx.uobabylon.edu.iq/undergrad_projs/s9O22KIdZUSvWH6ROctLw.pdf">مشروع تخرج جامعة بابل: Image Encryption using a logistic chaotic system</a></li>
 <li><a href="https://github.com/kunal9922/EncryptionAndDecryptionUsingChaoticKeySequence">GitHub: Encryption And Decryption Using Chaotic Key Sequence</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">Wikipedia: Entropy</a> · <a href="https://docs.python.org/3/library/hashlib.html">Python hashlib</a> · <a href="https://numba.pydata.org/numba-doc/dev/user/5minguide.html">Numba 5-minute guide</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">Wikipedia: Entropy</a> · <a href="https://docs.python.org/3/library/hashlib.html">Python hashlib</a> · <a href="https://numba.readthedocs.io/en/stable/user/5minguide.html">Numba 5-minute guide</a></li>
 </ul>
 <h3>الوجوه والفيديو</h3>
 <ul>
@@ -1029,7 +1073,7 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <li><a href="https://www.python.org/downloads/windows/">Python for Windows</a> · <a href="https://code.visualstudio.com/">VS Code</a> · <a href="https://pytorch.org/get-started/locally/">PyTorch install selector</a></li>
 <li><a href="https://sdgs.un.org/goals">UN Sustainable Development Goals</a> (لاستمارة المقترح)</li>
 </ul>
-<p class="meta">صورة الاختبار photo.jpg صورة عامة من ناسا (ضمن عيّنات مكتبة scikit-image)، وفيديو الاختبار مركّب منها. استبدليهما بصورك وفيديوهاتك.</p>
+<p class="meta">صورة الاختبار photo.jpg صورة عامة من ناسا، وفيديو الاختبار مركّب منها ومن صورة فنجان قهوة، وكلتاهما من العيّنات المرفقة بمكتبة scikit-image. استبدليهما بصورك وفيديوهاتك.</p>
 </main>
 <script>
 document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){

@@ -4,7 +4,7 @@
 
 التنصيب (مرة واحدة، داخل هذا المجلد):
 
-    py -m venv venv
+    py -3.13 -m venv venv
     venv\Scripts\activate
     pip install -r requirements.txt
 
@@ -23,5 +23,5 @@
 | sender.py + receiver.py | النظام كاملاً: مرسل ومستقبل |
 
 ملفات مساعدة: test_video.avi (فيديو اختبار)، photo.jpg (صورة اختبار، صورة عامة من ناسا)،
-face_detection_yunet_*.onnx (كاشف الوجوه YuNet من opencv_zoo، ترخيص Apache-2.0).
+face_detection_yunet_*.onnx (كاشف الوجوه YuNet من opencv_zoo، ترخيص MIT).
 موديل yolo26n.pt يُنزَّل تلقائياً عند أول تشغيل.
