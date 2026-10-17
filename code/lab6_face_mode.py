@@ -8,7 +8,7 @@ SOURCE = "test_video.avi"
 MASTER_KEY = "zahraa-secret-2026"
 MARGIN = 0.2                 # نكبّر مربع الوجه 20% من كل جهة (الشعر والذقن يكشفان الهوية أيضاً)
 
-# ملف الموديل: نزّليه من opencv_zoo (الرابط في الدليل) وضعيه بجانب هذا الملف
+# ملفا الموديل موجودان في مجلد الكود (مصدرهما opencv_zoo على GitHub، الرابط في الدليل)
 # OpenCV 5 -> face_detection_yunet_2026may.onnx   |   OpenCV 4 -> face_detection_yunet_2023mar.onnx
 MODEL = "face_detection_yunet_2026may.onnx" if cv2.__version__.startswith("5") else "face_detection_yunet_2023mar.onnx"
 
