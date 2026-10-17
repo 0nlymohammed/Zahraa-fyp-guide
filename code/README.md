@@ -1,4 +1,4 @@
-# كود ورشة المشروع
+# كود الدليل العملي
 
 الشرح الكامل خطوة بخطوة: https://0nlymohammed.github.io/Zahraa-fyp-guide/
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ورشة مشروع تتبع الأجسام والتشفير الفوضوي</title>
+<title>الدليل العملي لمشروع تتبع الأجسام والتشفير الفوضوي</title>
 <meta name="description" content="دليل عملي خطوة بخطوة لمشروع تخرج: تتبع الأجسام باستخدام التشفير الفوضوي مع نمط حماية خصوصية الوجوه">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 </style>
 </head>
 <body><main>
-<h1>ورشة مشروع تتبع الأجسام والتشفير الفوضوي</h1>
+<h1>الدليل العملي لمشروع تتبع الأجسام والتشفير الفوضوي</h1>
 <p>Object Tracking Using Chaotic Image Encryption with Face Privacy Mode</p>
 <p class="meta"><a href="https://github.com/0nlymohammed/Zahraa-fyp-guide">الكود على GitHub</a> · <a href="reference.html">النسخة النظرية المطوّلة</a> · <a href="review.html">مراجعة الاستمارة</a></p>
 
@@ -78,7 +78,7 @@ hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 <li><a href="#lab6">التجربة 6: وضع خصوصية الوجوه</a></li>
 <li><a href="#lab7">التجربة 7: أرقام التقرير</a></li>
 <li><a href="#lab8">التجربة 8: المرسل والمستقبل (المشروع كاملاً)</a></li>
-<li><a href="#coverage">هل الورشة تغطي كل ما في الملفين؟</a></li>
+<li><a href="#coverage">هل الدليل يغطي كل ما في الملفين؟</a></li>
 <li><a href="#report">من التجارب إلى التقرير والمناقشة</a></li>
 <li><a href="#limits">حدود لازم تذكرينها بنفسك</a></li>
 <li><a href="#english">English: terms and ready sentences</a></li>
@@ -919,10 +919,10 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <li><b>بطيء (4 FPS)</b> → هذا المعالج الضعيف الي جربت عليه. على لابتوبك مع الكرت، YOLO يصير أسرع بكثير، أما التشفير فيبقى على المعالج (هنا 5 إلى 7 FPS على معالج بنواتين؛ على لابتوب حديث أتوقع أكثر، قيسيها بنفسك بالتجربة 7). لو احتجتِ أسرع: وضع الوجوه يشفّر جزءاً صغيراً من الفريم بس (نحو 2% بفيديو الاختبار)، أو خفّضي الدقة إلى 640×360.</li></ul></div>
 <div class="box srcs"><div class="boxtitle">مصادر لهالخطوة (مرتبة من الأسهل)</div><ul><li><a href="https://blog.roboflow.com/yolov8-tracking-and-counting/" target="_blank" rel="noopener">Roboflow: Track and Count Objects</a>: مثال يبني شيئاً فوق التتبع (عدّ الأشخاص). نفس الأسلوب الي استخدمناه بالمرسل.</li><li><a href="https://orbit.au.dk/object-recognition-detection-and-tracking-what-are-the-differences/" target="_blank" rel="noopener">مقال: الفرق بين التعرف والكشف والتتبع</a>: صفحة قصيرة توضح المصطلحات الثلاثة الي راح تُسألين عنها بالمناقشة.</li></ul></div>
 
-<h2 id="coverage">هل الورشة تغطي كل ما في الملفين؟</h2>
+<h2 id="coverage">هل الدليل يغطي كل ما في الملفين؟</h2>
 <p>نعم، نفس الفكرة ونفس المراحل، مع تحسينات مكتوب سببها. الجدول يمر على كل بند في ملف الشرح وفي استمارة المقترح ويقول أين يُنفَّذ.</p>
 <h3>ملف الشرح (Idea / Pipeline / Modules)</h3>
-<table><tr><th>البند في الملف</th><th>أين في الورشة</th><th>ملاحظة</th></tr>
+<table><tr><th>البند في الملف</th><th>أين في الدليل</th><th>ملاحظة</th></tr>
 <tr><td>Detect people / Object Detection (YOLO / OpenCV)</td><td>التجربة 2، والتجربة 8 (<code>classes=[0]</code> للأشخاص فقط)</td><td>الملف يكتب YOLOv8 والاستمارة «latest version»؛ استخدمنا YOLO26 (أحدث إصدار صادر) واذكري الاسم صراحة بالتقرير</td></tr>
 <tr><td>Track movement / Object Tracking (CSRT / KCF / DeepSORT)</td><td>التجربة 2 (BoT-SORT عبر <code>model.track</code>)</td><td>CSRT وKCF يتتبعان جسماً واحداً فقط وغير موجودين في OpenCV 5 الذي ينصّبه pip اليوم، فاذكريهما في مراجعة الأدبيات فقط. BoT-SORT من عائلة DeepSORT (كشف ثم مطابقة مع Kalman filter)</td></tr>
 <tr><td>Camera Input / Frame Extraction</td><td>التجربة 1</td><td>الفريمات تُقرأ في البداية بـ VideoCapture؛ «Frame Extraction» في الملف تعني أخذ الفريم بعد المعالجة لتشفيره</td></tr>
@@ -936,7 +936,7 @@ print(f&quot;المستقبل عرض {i} فريم كـ {status}. الفيديو:
 <tr><td>Face Privacy Mode: Face Detection (Haar / DNN / YOLO-face) → face box → encrypt ONLY face area OR blur → rest unchanged → tracking continues</td><td>التجربة 6 (+ خيار BLUR) والتجربة 8 بوضع face</td><td>استخدمنا YuNet بدل Haar لأنه أدق وأحدث ومدمج في OpenCV؛ «YOLO-face» ليس موديلاً رسمياً. التضبيب موجود كخيار للمقارنة</td></tr>
 <tr><td>Applications: smart surveillance, hospitals, universities, public buildings</td><td>الفكرة بدقيقتين</td><td>تنفع لمقدمة التقرير ولتبرير أهداف SDG</td></tr></table>
 <h3>استمارة المقترح (Aim / Outcomes / Equipment)</h3>
-<table><tr><th>البند</th><th>أين في الورشة</th><th>ملاحظة</th></tr>
+<table><tr><th>البند</th><th>أين في الدليل</th><th>ملاحظة</th></tr>
 <tr><td>Develop an object detection and tracking system using deep learning</td><td>التجربتان 2 و8</td><td>YOLO هو جزء التعلم العميق؛ لا تدريب مطلوب</td></tr>
 <tr><td>Implement face privacy protection techniques</td><td>التجربة 6</td><td>تقنيتان: تشفير (يُعكس) وتضبيب (لا يُعكس)</td></tr>
 <tr><td>Integrate chaotic image encryption into the tracking system</td><td>التجربة 8</td><td>ملفان: sender.py وreceiver.py يكوّنان النظام الكامل</td></tr>
